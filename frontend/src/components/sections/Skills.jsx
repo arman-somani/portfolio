@@ -95,8 +95,14 @@ const Skills = () => {
               >
                 <motion.span 
                   className="text-5xl md:text-6xl transition-transform"
-                  animate={hovered === i ? { rotate: [0, -10, 10, -10, 0] } : {}}
-                  transition={{ duration: 0.5 }}
+                  animate={{ 
+                    y: [0, -5, 0],
+                    rotate: hovered === i ? [0, -10, 10, -10, 0] : 0 
+                  }}
+                  transition={{ 
+                    y: { duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: i * 0.15 },
+                    rotate: { duration: 0.5 }
+                  }}
                 >
                   {skill.icon}
                 </motion.span>
