@@ -12,6 +12,7 @@ import AchievementToast from '../components/ui/AchievementToast';
 import Creeper from '../components/ui/Creeper';
 import DayNightToggle from '../components/ui/DayNightToggle';
 import ChatConsole from '../components/ui/ChatConsole';
+import SmoothScrollSnap from '../components/layout/SmoothScrollSnap';
 
 const Home = () => {
   const [isDark, setIsDark] = useState(false);
@@ -67,6 +68,7 @@ const Home = () => {
     <div className={`min-h-screen relative pb-[24px] transition-colors duration-1000 ${
       isDark ? 'bg-[#0a0a1a]' : 'bg-[var(--mc-obsidian)]'
     }`}>
+      <SmoothScrollSnap />
       {/* Global interactive layers */}
       <BlockBreakParticles />
       <AchievementToast />
