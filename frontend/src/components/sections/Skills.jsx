@@ -18,6 +18,7 @@ const skillsData = [
   { name: 'Oracle', icon: '🗄️', color: '#F80000', rarity: 'RARE', desc: '+25% Enterprise Data', enchanted: false },
   { name: 'CSS', icon: '🌈', color: '#1572B6', rarity: 'COMMON', desc: '+20% Visual Charm', enchanted: false },
   { name: 'HTML', icon: '🌐', color: '#E34F26', rarity: 'COMMON', desc: '+20% Structure Base', enchanted: false },
+  { name: 'JavaScript', icon: '📜', color: '#F7DF1E', rarity: 'LEGENDARY', desc: '+50% Logic Core', enchanted: true },
   { name: 'AI Agents', icon: '🤖', color: '#A855F7', rarity: 'LEGENDARY', desc: '+60% Automation IQ', enchanted: true },
 ];
 
