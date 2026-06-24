@@ -30,7 +30,7 @@ const Navbar = () => {
           
           {/* Logo */}
           <a href="#home" className="flex items-center gap-3 group">
-            <img src="/crafting-table.webp" alt="Crafting Table Logo" className="w-8 h-8 relative" style={{ imageRendering: 'pixelated' }} />
+            <img src="/crafting-table.png" alt="Crafting Table Logo" className="w-8 h-8 relative" style={{ imageRendering: 'pixelated' }} />
             <span className="font-pixel text-[10px] text-[var(--mc-gold)] group-hover:text-[var(--mc-diamond)] transition-colors">
               PORTFOLIO
             </span>
