@@ -183,3 +183,13 @@
 .animate-cloud {
   animation: cloud-drift linear infinite;
 }
+
+/* Scroll Snapping */
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+section, footer {
+  scroll-snap-align: start;
+}
