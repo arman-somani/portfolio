@@ -85,7 +85,7 @@ const Skills = () => {
                 onClick={() => setSelectedSlot(selectedSlot === i ? null : i)}
                 onHoverStart={() => setHovered(i)}
                 onHoverEnd={() => setHovered(null)}
-                className={`mc-slot p-4 flex flex-col items-center justify-center gap-3 cursor-pointer group relative transition-all duration-200 aspect-square ${
+                className={`mc-slot p-2 md:p-3 flex flex-col items-center justify-center gap-2 cursor-pointer group relative transition-all duration-200 aspect-square ${
                   selectedSlot === i ? 'ring-2 ring-white/80 bg-[#777]' : ''
                 }`}
                 style={skill.enchanted ? { 
@@ -94,18 +94,18 @@ const Skills = () => {
                 } : {}}
               >
                 <motion.span 
-                  className="text-3xl md:text-4xl transition-transform"
+                  className="text-5xl md:text-6xl transition-transform"
                   animate={hovered === i ? { rotate: [0, -10, 10, -10, 0] } : {}}
                   transition={{ duration: 0.5 }}
                 >
                   {skill.icon}
                 </motion.span>
                 
-                <span className="font-pixel text-[7px] md:text-[8px] text-center leading-tight text-white/80 group-hover:text-white">
+                <span className="font-pixel text-[10px] md:text-xs text-center leading-tight text-white/80 group-hover:text-white mt-1">
                   {skill.name}
                 </span>
 
-                <span className="font-pixel text-[6px] tracking-wider" style={{ color: rarityColors[skill.rarity] }}>
+                <span className="font-pixel text-[8px] tracking-wider" style={{ color: rarityColors[skill.rarity] }}>
                   {skill.rarity}
                 </span>
 
