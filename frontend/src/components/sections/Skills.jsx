@@ -77,7 +77,7 @@ const Skills = () => {
                 onClick={() => setSelectedSlot(selectedSlot === i ? null : i)}
                 onHoverStart={() => setHovered(i)}
                 onHoverEnd={() => setHovered(null)}
-                className={`mc-slot p-4 flex flex-col items-center justify-center gap-3 cursor-pointer group relative transition-all duration-200 ${
+                className={`mc-slot p-4 flex flex-col items-center justify-center gap-3 cursor-pointer group relative transition-all duration-200 aspect-square ${
                   selectedSlot === i ? 'ring-2 ring-white/80 bg-[#777]' : ''
                 }`}
                 style={skill.enchanted ? { 
@@ -122,6 +122,14 @@ const Skills = () => {
                   </motion.div>
                 )}
               </motion.div>
+            ))}
+
+            {/* 10 Empty Slots */}
+            {Array.from({ length: 10 }).map((_, i) => (
+              <div 
+                key={`empty-${i}`} 
+                className="mc-slot aspect-square bg-[#333] opacity-60"
+              ></div>
             ))}
           </div>
         </div>
