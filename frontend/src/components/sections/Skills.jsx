@@ -12,6 +12,13 @@ const skillsData = [
   { name: 'Figma', icon: '🎯', color: '#F24E1E', rarity: 'RARE', desc: '+30% Design Vision', enchanted: false },
   { name: 'Python', icon: '🐍', color: '#3776AB', rarity: 'EPIC', desc: '+35% Versatility', enchanted: false },
   { name: 'Docker', icon: '🐳', color: '#2496ED', rarity: 'RARE', desc: '+25% Deployment', enchanted: false },
+  { name: 'Java', icon: '☕', color: '#ED8B00', rarity: 'EPIC', desc: '+40% Enterprise Strength', enchanted: false },
+  { name: 'C', icon: 'Ⓒ', color: '#A8B9CC', rarity: 'RARE', desc: '+30% Low-level Control', enchanted: false },
+  { name: 'C++', icon: '➕', color: '#00599C', rarity: 'EPIC', desc: '+45% High Performance', enchanted: false },
+  { name: 'Oracle', icon: '🗄️', color: '#F80000', rarity: 'RARE', desc: '+25% Enterprise Data', enchanted: false },
+  { name: 'CSS', icon: '🌈', color: '#1572B6', rarity: 'COMMON', desc: '+20% Visual Charm', enchanted: false },
+  { name: 'HTML', icon: '🌐', color: '#E34F26', rarity: 'COMMON', desc: '+20% Structure Base', enchanted: false },
+  { name: 'AI Agents', icon: '🤖', color: '#A855F7', rarity: 'LEGENDARY', desc: '+60% Automation IQ', enchanted: true },
 ];
 
 const rarityColors = {
@@ -124,8 +131,8 @@ const Skills = () => {
               </motion.div>
             ))}
 
-            {/* 10 Empty Slots */}
-            {Array.from({ length: 10 }).map((_, i) => (
+            {/* Empty Slots to fill the grid up to 20 */}
+            {Array.from({ length: Math.max(0, 20 - skillsData.length) }).map((_, i) => (
               <div 
                 key={`empty-${i}`} 
                 className="mc-slot aspect-square bg-[#333] opacity-60"
