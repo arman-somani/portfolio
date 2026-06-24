@@ -29,6 +29,15 @@ const rarityColors = {
   LEGENDARY: '#FFAA00',
 };
 
+const continuousAnimations = [
+  { animate: { y: [0, -6, 0] }, transition: { duration: 2.5, ease: 'easeInOut' } },
+  { animate: { rotate: [0, 8, -8, 0] }, transition: { duration: 3, ease: 'linear' } },
+  { animate: { scale: [1, 1.1, 1] }, transition: { duration: 2, ease: 'easeInOut' } },
+  { animate: { x: [0, 4, -4, 0] }, transition: { duration: 3.5, ease: 'easeInOut' } },
+  { animate: { y: [0, -4, 0], rotate: [0, 5, -5, 0] }, transition: { duration: 3, ease: 'easeInOut' } },
+  { animate: { scale: [1, 0.9, 1], rotate: [0, 4, 0] }, transition: { duration: 2.5, ease: 'easeInOut' } },
+];
+
 const Skills = () => {
   const [hovered, setHovered] = useState(null);
   const [selectedSlot, setSelectedSlot] = useState(null);
@@ -95,14 +104,16 @@ const Skills = () => {
               >
                 <motion.span 
                   className="text-5xl md:text-6xl transition-transform"
-                  animate={{ 
-                    y: [0, -5, 0],
-                    rotate: hovered === i ? [0, -10, 10, -10, 0] : 0 
-                  }}
-                  transition={{ 
-                    y: { duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: i * 0.15 },
-                    rotate: { duration: 0.5 }
-                  }}
+                  animate={
+                    hovered === i 
+                      ? { rotate: [0, -15, 15, -15, 0], scale: 1.2 } 
+                      : continuousAnimations[i % continuousAnimations.length].animate
+                  }
+                  transition={
+                    hovered === i
+                      ? { duration: 0.5 }
+                      : { ...continuousAnimations[i % continuousAnimations.length].transition, repeat: Infinity, delay: i * 0.1 }
+                  }
                 >
                   {skill.icon}
                 </motion.span>
