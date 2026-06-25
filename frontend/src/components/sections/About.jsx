@@ -48,12 +48,12 @@ const About = () => {
         <div className="bg-[#9C6B30] mc-block p-8 md:p-12 relative">
           <div className="absolute inset-0 mc-texture opacity-30 pointer-events-none"></div>
           <div className="relative z-10">
-            <p className="text-2xl md:text-4xl text-white leading-relaxed" style={{ textShadow: '2px 2px 0px rgba(0,0,0,0.3)' }}>
-              Hey there! I'm a passionate <span className="text-[var(--mc-diamond)]">Full Stack Developer</span> who loves crafting digital experiences that feel as immersive as exploring a new Minecraft world.
+            <p className="text-xl md:text-2xl text-white leading-relaxed" style={{ textShadow: '2px 2px 0px rgba(0,0,0,0.3)' }}>
+              Hey there! I turn ideas into high-performance digital experiences. As a <span className="text-[var(--mc-diamond)]">Full Stack Developer</span>, I specialize in designing responsive user interfaces, developing scalable backend systems, and building complete web applications from concept to deployment.
             </p>
-            <div className="mt-8 h-1 bg-[var(--mc-wood)]"></div>
-            <p className="mt-8 text-xl md:text-2xl text-white/80 leading-relaxed" style={{ textShadow: '2px 2px 0px rgba(0,0,0,0.3)' }}>
-              With <span className="text-[var(--mc-emerald)]">5+ years of experience</span>, I specialize in building modern web applications using React, Node.js, and everything in between.
+            <div className="mt-6 h-1 bg-[var(--mc-wood)]"></div>
+            <p className="mt-6 text-lg md:text-xl text-white/80 leading-relaxed" style={{ textShadow: '2px 2px 0px rgba(0,0,0,0.3)' }}>
+              I love working with React, Next.js, Node.js, Express, MongoDB, TypeScript, Tailwind CSS, and modern animation libraries to create applications that are both powerful and visually impressive. I'm always exploring new technologies, currently focusing on <span className="text-[var(--mc-emerald)]">AI integration, cloud infrastructure, Docker, Kubernetes</span>, and advanced web performance optimization to build the next generation of web applications.
             </p>
           </div>
         </div>

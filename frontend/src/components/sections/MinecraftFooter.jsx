@@ -137,7 +137,7 @@ const MinecraftFooter = () => {
           <div className="grid grid-cols-3 gap-4 mb-12 max-w-3xl mx-auto">
             {[
               { label: 'GitHub', icon: '📦', url: 'https://github.com/arman-somani' },
-              { label: 'LinkedIn', icon: '🔗', url: 'https://linkedin.com' },
+              { label: 'LinkedIn', icon: '🔗', url: 'https://www.linkedin.com/in/arman-somani-744057301/' },
               { label: 'Email', icon: '✉', url: 'mailto:armansomani786@gmail.com' },
             ].map((link, i) => (
               <motion.a
