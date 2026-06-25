@@ -23,7 +23,7 @@ const skillCategories = [
       { name: 'Express', icon: '🚂', color: '#ffffff', rarity: 'RARE', desc: '+30% Routing', enchanted: false },
       { name: 'REST API', icon: '🔌', color: '#009688', rarity: 'COMMON', desc: '+25% Connectivity', enchanted: false },
       { name: 'JWT', icon: '🔑', color: '#ffd700', rarity: 'EPIC', desc: '+35% Security', enchanted: true },
-      { name: 'Passport', icon: '🛂', color: '#34E27A', rarity: 'RARE', desc: '+30% Auth', enchanted: false },
+      { name: 'Postman', icon: '🛂', color: '#34E27A', rarity: 'RARE', desc: '+30% Auth', enchanted: false },
       { name: 'Socket.IO', icon: '⚡', color: '#ffffff', rarity: 'EPIC', desc: '+45% Real-time', enchanted: true },
     ]
   },
@@ -117,81 +117,80 @@ const Skills = () => {
               <span className="font-pixel text-sm text-white/80">{category.title.toUpperCase()} INVENTORY</span>
               <span className="font-pixel text-[10px] text-white/40">{category.skills.length} ITEMS</span>
             </div>
-            
+
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
               {category.skills.map((skill, i) => {
                 const isSelected = selectedSkill?.name === skill.name;
                 return (
-                <motion.div
-                  key={i}
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 20, delay: i * 0.03 }}
-                  whileHover={{ scale: 1.1, y: -8 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => setSelectedSkill(isSelected ? null : skill)}
-                  onHoverStart={() => setHoveredSkill(skill.name)}
-                  onHoverEnd={() => setHoveredSkill(null)}
-                  className={`mc-slot p-2 md:p-3 flex flex-col items-center justify-center gap-2 cursor-pointer group relative transition-all duration-200 aspect-square ${
-                    isSelected ? 'ring-2 ring-white/80 bg-[#777]' : ''
-                  }`}
-                  style={skill.enchanted ? { 
-                    boxShadow: `0 0 15px ${skill.color}40`,
-                    animation: 'pulse 3s infinite',
-                  } : {}}
-                >
-                  <motion.span 
-                    className="text-5xl md:text-6xl transition-transform"
-                    animate={
-                      hoveredSkill === skill.name 
-                        ? { rotate: [0, -15, 15, -15, 0], scale: 1.2 } 
-                        : continuousAnimations[i % continuousAnimations.length].animate
-                    }
-                    transition={
-                      hoveredSkill === skill.name
-                        ? { duration: 0.5 }
-                        : { ...continuousAnimations[i % continuousAnimations.length].transition, repeat: Infinity, delay: i * 0.1 }
-                    }
+                  <motion.div
+                    key={i}
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 20, delay: i * 0.03 }}
+                    whileHover={{ scale: 1.1, y: -8 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => setSelectedSkill(isSelected ? null : skill)}
+                    onHoverStart={() => setHoveredSkill(skill.name)}
+                    onHoverEnd={() => setHoveredSkill(null)}
+                    className={`mc-slot p-2 md:p-3 flex flex-col items-center justify-center gap-2 cursor-pointer group relative transition-all duration-200 aspect-square ${isSelected ? 'ring-2 ring-white/80 bg-[#777]' : ''
+                      }`}
+                    style={skill.enchanted ? {
+                      boxShadow: `0 0 15px ${skill.color}40`,
+                      animation: 'pulse 3s infinite',
+                    } : {}}
                   >
-                    {skill.icon}
-                  </motion.span>
-                  
-                  <span className="font-pixel text-[10px] md:text-xs text-center leading-tight text-white/80 group-hover:text-white mt-1">
-                    {skill.name}
-                  </span>
-
-                  <span className="font-pixel text-[8px] tracking-wider" style={{ color: rarityColors[skill.rarity] }}>
-                    {skill.rarity}
-                  </span>
-
-                  {/* Tooltip */}
-                  <div className={`absolute -top-28 left-1/2 -translate-x-1/2 bg-[#1B0A2E] border-2 rounded px-5 py-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-30 hidden md:block ${
-                    skill.rarity === 'LEGENDARY' ? 'border-[#FFAA00]' : skill.rarity === 'EPIC' ? 'border-[#AA00AA]' : 'border-[#5555FF]'
-                  }`}>
-                    <p className="font-pixel text-xs mb-1" style={{ color: skill.color }}>{skill.name}</p>
-                    <p className="font-pixel text-[8px]" style={{ color: rarityColors[skill.rarity] }}>{skill.rarity}</p>
-                    <div className="h-[2px] bg-white/10 my-2"></div>
-                    <p className="text-base text-[var(--mc-emerald)]">{skill.desc}</p>
-                    {skill.enchanted && <p className="text-base text-[var(--mc-diamond)] mt-1">✨ Enchanted</p>}
-                  </div>
-
-                  {isSelected && (
-                    <motion.div 
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      className="absolute -top-2 -right-2 w-5 h-5 bg-[var(--mc-emerald)] mc-block flex items-center justify-center"
+                    <motion.span
+                      className="text-5xl md:text-6xl transition-transform"
+                      animate={
+                        hoveredSkill === skill.name
+                          ? { rotate: [0, -15, 15, -15, 0], scale: 1.2 }
+                          : continuousAnimations[i % continuousAnimations.length].animate
+                      }
+                      transition={
+                        hoveredSkill === skill.name
+                          ? { duration: 0.5 }
+                          : { ...continuousAnimations[i % continuousAnimations.length].transition, repeat: Infinity, delay: i * 0.1 }
+                      }
                     >
-                      <span className="text-[8px] text-black">✓</span>
-                    </motion.div>
-                  )}
-                </motion.div>
-              )})}
+                      {skill.icon}
+                    </motion.span>
+
+                    <span className="font-pixel text-[10px] md:text-xs text-center leading-tight text-white/80 group-hover:text-white mt-1">
+                      {skill.name}
+                    </span>
+
+                    <span className="font-pixel text-[8px] tracking-wider" style={{ color: rarityColors[skill.rarity] }}>
+                      {skill.rarity}
+                    </span>
+
+                    {/* Tooltip */}
+                    <div className={`absolute -top-28 left-1/2 -translate-x-1/2 bg-[#1B0A2E] border-2 rounded px-5 py-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-30 hidden md:block ${skill.rarity === 'LEGENDARY' ? 'border-[#FFAA00]' : skill.rarity === 'EPIC' ? 'border-[#AA00AA]' : 'border-[#5555FF]'
+                      }`}>
+                      <p className="font-pixel text-xs mb-1" style={{ color: skill.color }}>{skill.name}</p>
+                      <p className="font-pixel text-[8px]" style={{ color: rarityColors[skill.rarity] }}>{skill.rarity}</p>
+                      <div className="h-[2px] bg-white/10 my-2"></div>
+                      <p className="text-base text-[var(--mc-emerald)]">{skill.desc}</p>
+                      {skill.enchanted && <p className="text-base text-[var(--mc-diamond)] mt-1">✨ Enchanted</p>}
+                    </div>
+
+                    {isSelected && (
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="absolute -top-2 -right-2 w-5 h-5 bg-[var(--mc-emerald)] mc-block flex items-center justify-center"
+                      >
+                        <span className="text-[8px] text-black">✓</span>
+                      </motion.div>
+                    )}
+                  </motion.div>
+                )
+              })}
 
               {/* Empty Slots to fill the grid up to nearest multiple of 5 */}
               {Array.from({ length: Math.max(0, (5 - (category.skills.length % 5)) % 5) }).map((_, i) => (
-                <div 
-                  key={`empty-${i}`} 
+                <div
+                  key={`empty-${i}`}
                   className="mc-slot aspect-square bg-[#333] opacity-60"
                 ></div>
               ))}
