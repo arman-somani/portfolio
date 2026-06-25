@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import api from '../../services/api';
 
 const MinecraftFooter = () => {
   const [time, setTime] = useState('');
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+  const [status, setStatus] = useState('idle');
 
   useEffect(() => {
     const updateTime = () => {
@@ -13,6 +16,21 @@ const MinecraftFooter = () => {
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('loading');
+    try {
+      await api.post('/contact', formData);
+      setStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
+  };
 
   return (
     <footer id="contact" className="relative">
@@ -56,19 +74,58 @@ const MinecraftFooter = () => {
           
           {/* Contact CTA */}
           <div className="text-center mb-16">
-            <div className="inline-block bg-[#9C6B30] mc-block p-8 md:p-12">
+            <div className="inline-block bg-[#9C6B30] mc-block p-6 md:p-10 w-full max-w-lg">
               <h2 className="font-pixel text-sm md:text-xl text-[var(--mc-gold)] mb-6">
                 LET'S BUILD<br/>TOGETHER
               </h2>
-              <motion.a 
-                href="mailto:hello@portfolio.com" 
-                className="mc-btn !text-[10px] !bg-[var(--mc-emerald)] block" 
-                style={{ color: '#000', textShadow: 'none' }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                ✉ SEND MESSAGE
-              </motion.a>
+              <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left">
+                <input 
+                  type="text" 
+                  placeholder="NAME"
+                  required
+                  value={formData.name}
+                  onChange={e => setFormData({...formData, name: e.target.value})}
+                  className="bg-[#222] border-2 border-[#111] border-b-[#444] border-r-[#444] text-white p-3 font-pixel text-[10px] md:text-xs outline-none focus:border-[var(--mc-diamond)] w-full"
+                />
+                <input 
+                  type="email" 
+                  placeholder="EMAIL"
+                  required
+                  value={formData.email}
+                  onChange={e => setFormData({...formData, email: e.target.value})}
+                  className="bg-[#222] border-2 border-[#111] border-b-[#444] border-r-[#444] text-white p-3 font-pixel text-[10px] md:text-xs outline-none focus:border-[var(--mc-diamond)] w-full"
+                />
+                <input 
+                  type="text" 
+                  placeholder="SUBJECT"
+                  required
+                  value={formData.subject}
+                  onChange={e => setFormData({...formData, subject: e.target.value})}
+                  className="bg-[#222] border-2 border-[#111] border-b-[#444] border-r-[#444] text-white p-3 font-pixel text-[10px] md:text-xs outline-none focus:border-[var(--mc-diamond)] w-full"
+                />
+                <textarea 
+                  placeholder="MESSAGE"
+                  required
+                  rows="4"
+                  value={formData.message}
+                  onChange={e => setFormData({...formData, message: e.target.value})}
+                  className="bg-[#222] border-2 border-[#111] border-b-[#444] border-r-[#444] text-white p-3 font-pixel text-[10px] md:text-xs outline-none focus:border-[var(--mc-diamond)] w-full resize-none"
+                />
+                
+                {status === 'success' && <div className="text-[var(--mc-emerald)] font-pixel text-[10px] text-center">MESSAGE SENT SUCCESSFULLY!</div>}
+                {status === 'error' && <div className="text-[var(--mc-redstone)] font-pixel text-[10px] text-center">ERROR SENDING MESSAGE!</div>}
+
+                <motion.button 
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className={`mc-btn !text-[10px] !bg-[var(--mc-emerald)] block w-full mt-2 ${status === 'loading' ? 'opacity-50 cursor-not-allowed' : ''}`} 
+                  style={{ color: '#000', textShadow: 'none' }}
+                  whileHover={status !== 'loading' ? { scale: 1.02 } : {}}
+                  whileTap={status !== 'loading' ? { scale: 0.98 } : {}}
+                >
+                  {status === 'loading' ? 'SENDING...' : '✉ SEND MESSAGE'}
+                </motion.button>
+              </form>
             </div>
             <div className="mx-auto w-6 h-12 bg-[#6B4226] mc-block"></div>
           </div>
