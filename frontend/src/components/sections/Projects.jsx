@@ -10,7 +10,11 @@ const Projects = () => {
     const fetchProjects = async () => {
       try {
         const { data } = await api.get('/projects');
-        setProjects(data);
+        if (data && data.length > 0) {
+          setProjects(data);
+        } else {
+          throw new Error('Database connected but empty');
+        }
       } catch (error) {
         console.error('Error fetching projects, using fallback data', error);
         setProjects([

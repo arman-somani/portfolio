@@ -119,7 +119,7 @@ const Skills = () => {
             </div>
             
             <div className="grid grid-cols-3 md:grid-cols-5 gap-3">
-              {category.skills.map((skill, i) => {
+              {category.skills.length > 0 ? category.skills.map((skill, i) => {
                 const isSelected = selectedSkill?.name === skill.name;
                 return (
                 <motion.div

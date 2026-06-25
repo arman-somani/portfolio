@@ -10,7 +10,11 @@ const Experience = () => {
     const fetchExperiences = async () => {
       try {
         const { data } = await api.get('/experience');
-        setExperiences(data);
+        if (data && data.length > 0) {
+          setExperiences(data);
+        } else {
+          throw new Error('Database connected but empty');
+        }
       } catch (error) {
         console.error('Error fetching experiences, using fallback data', error);
         setExperiences([
