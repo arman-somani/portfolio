@@ -112,14 +112,14 @@ const Hero = ({ isDark }) => {
 
       {/* Main Content with parallax */}
       <motion.div style={{ y: contentY, opacity: contentOpacity }} className="relative z-10 text-center px-4">
-        <div className="flex flex-wrap justify-center gap-1 md:gap-2 mb-4 max-w-4xl mx-auto">
+        <div className="flex justify-center gap-[2px] sm:gap-1 md:gap-2 mb-4 w-full px-2">
           {titleLetters.map((letter, i) => (
             letter === " " ? (
-              <div key={i} className="w-4 md:w-8"></div>
+              <div key={i} className="w-2 sm:w-4 md:w-8"></div>
             ) : (
             <motion.div
               key={i}
-              className="w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 bg-[var(--mc-stone)] mc-block flex items-center justify-center cursor-pointer"
+              className="w-6 h-6 sm:w-10 sm:h-10 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-[var(--mc-stone)] mc-block flex items-center justify-center cursor-pointer"
               initial={{ y: -300, rotate: -180 }}
               animate={{ y: 0, rotate: 0 }}
               whileHover={{ 
@@ -136,7 +136,7 @@ const Hero = ({ isDark }) => {
                 delay: 0.5 + (i * 0.15) 
               }}
             >
-              <span className="text-2xl sm:text-3xl md:text-5xl font-pixel text-[var(--mc-gold)] select-none" style={{ textShadow: '3px 3px 0px rgba(0,0,0,0.5)' }}>
+              <span className="text-sm sm:text-xl md:text-4xl lg:text-5xl font-pixel text-[var(--mc-gold)] select-none" style={{ textShadow: '2px 2px 0px rgba(0,0,0,0.5)' }}>
                 {letter}
               </span>
             </motion.div>
