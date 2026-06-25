@@ -127,7 +127,7 @@ const Skills = () => {
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ type: 'spring', stiffness: 300, delay: i * 0.08 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 20, delay: i * 0.03 }}
                   whileHover={{ scale: 1.1, y: -8 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setSelectedSkill(isSelected ? null : skill)}
