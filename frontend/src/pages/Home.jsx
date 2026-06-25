@@ -23,8 +23,8 @@ const Home = () => {
     }`}>
       {/* Global atmospheric night overlay */}
       <div 
-        className={`fixed inset-0 z-[40] pointer-events-none transition-opacity duration-1000 bg-[#0A0A2A] mix-blend-multiply ${
-          isDark ? 'opacity-70' : 'opacity-0'
+        className={`fixed inset-0 z-[40] pointer-events-none transition-opacity duration-1000 bg-[#0A1A4A] mix-blend-multiply ${
+          isDark ? 'opacity-50' : 'opacity-0'
         }`}
       ></div>
 
