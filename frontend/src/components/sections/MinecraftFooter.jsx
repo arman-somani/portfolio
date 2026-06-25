@@ -39,9 +39,9 @@ const MinecraftFooter = () => {
     <footer id="contact" className="relative">
       {/* Lava ocean layer */}
       <div className="w-full h-8 relative overflow-hidden">
-        <motion.div 
+        <motion.div
           className="w-[200%] h-full absolute"
-          style={{ 
+          style={{
             background: 'repeating-linear-gradient(90deg, #CF4913 0px, #FF6B35 40px, #CF4913 80px)',
             boxShadow: '0 -12px 40px rgba(207, 73, 19, 0.6)'
           }}
@@ -49,17 +49,17 @@ const MinecraftFooter = () => {
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
         />
         {/* Lava bubbles */}
-        <motion.div 
+        <motion.div
           className="absolute top-1 left-[20%] w-2 h-2 bg-[#FF9944] rounded-full"
           animate={{ y: [-4, -12, -4], opacity: [0, 1, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, delay: 0 }}
         />
-        <motion.div 
+        <motion.div
           className="absolute top-1 left-[55%] w-2 h-2 bg-[#FFAA55] rounded-full"
           animate={{ y: [-4, -10, -4], opacity: [0, 1, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, delay: 0.7 }}
         />
-        <motion.div 
+        <motion.div
           className="absolute top-2 left-[80%] w-1 h-1 bg-[#FF8833] rounded-full"
           animate={{ y: [-2, -8, -2], opacity: [0, 1, 0] }}
           transition={{ duration: 1.2, repeat: Infinity, delay: 1.2 }}
@@ -74,54 +74,54 @@ const MinecraftFooter = () => {
         </div>
 
         <div className="max-w-5xl mx-auto relative z-10">
-          
+
           {/* Contact CTA */}
           <div className="text-center mb-16">
             <div className="inline-block bg-[#9C6B30] mc-block p-6 md:p-10 w-full max-w-lg">
               <h2 className="font-pixel text-sm md:text-xl text-[var(--mc-gold)] mb-6">
-                LET'S BUILD<br/>TOGETHER
+                LET'S BUILD<br />TOGETHER
               </h2>
               <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left">
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   placeholder="NAME"
                   required
                   value={formData.name}
-                  onChange={e => setFormData({...formData, name: e.target.value})}
+                  onChange={e => setFormData({ ...formData, name: e.target.value })}
                   className="bg-[#222] border-2 border-[#111] border-b-[#444] border-r-[#444] text-white p-3 font-pixel text-[10px] md:text-xs outline-none focus:border-[var(--mc-diamond)] w-full"
                 />
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   placeholder="EMAIL"
                   required
                   value={formData.email}
-                  onChange={e => setFormData({...formData, email: e.target.value})}
+                  onChange={e => setFormData({ ...formData, email: e.target.value })}
                   className="bg-[#222] border-2 border-[#111] border-b-[#444] border-r-[#444] text-white p-3 font-pixel text-[10px] md:text-xs outline-none focus:border-[var(--mc-diamond)] w-full"
                 />
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   placeholder="SUBJECT"
                   required
                   value={formData.subject}
-                  onChange={e => setFormData({...formData, subject: e.target.value})}
+                  onChange={e => setFormData({ ...formData, subject: e.target.value })}
                   className="bg-[#222] border-2 border-[#111] border-b-[#444] border-r-[#444] text-white p-3 font-pixel text-[10px] md:text-xs outline-none focus:border-[var(--mc-diamond)] w-full"
                 />
-                <textarea 
+                <textarea
                   placeholder="MESSAGE"
                   required
                   rows="4"
                   value={formData.message}
-                  onChange={e => setFormData({...formData, message: e.target.value})}
+                  onChange={e => setFormData({ ...formData, message: e.target.value })}
                   className="bg-[#222] border-2 border-[#111] border-b-[#444] border-r-[#444] text-white p-3 font-pixel text-[10px] md:text-xs outline-none focus:border-[var(--mc-diamond)] w-full resize-none"
                 />
-                
+
                 {status === 'success' && <div className="text-[var(--mc-emerald)] font-pixel text-[10px] text-center">MESSAGE SENT SUCCESSFULLY!</div>}
                 {status === 'error' && <div className="text-[var(--mc-redstone)] font-pixel text-[10px] text-center">ERROR: {errorMessage}</div>}
 
-                <motion.button 
+                <motion.button
                   type="submit"
                   disabled={status === 'loading'}
-                  className={`mc-btn !text-[10px] !bg-[var(--mc-emerald)] block w-full mt-2 ${status === 'loading' ? 'opacity-50 cursor-not-allowed' : ''}`} 
+                  className={`mc-btn !text-[10px] !bg-[var(--mc-emerald)] block w-full mt-2 ${status === 'loading' ? 'opacity-50 cursor-not-allowed' : ''}`}
                   style={{ color: '#000', textShadow: 'none' }}
                   whileHover={status !== 'loading' ? { scale: 1.02 } : {}}
                   whileTap={status !== 'loading' ? { scale: 0.98 } : {}}
@@ -139,12 +139,12 @@ const MinecraftFooter = () => {
               { label: 'GitHub', icon: '📦', url: 'https://github.com' },
               { label: 'LinkedIn', icon: '🔗', url: 'https://linkedin.com' },
               { label: 'Twitter', icon: '🐦', url: 'https://twitter.com' },
-              { label: 'Email', icon: '✉', url: 'mailto:hello@portfolio.com' },
+              { label: 'Email', icon: '✉', url: 'mailto:armansomani786@gmail.com' },
             ].map((link, i) => (
-              <motion.a 
-                key={i} 
-                href={link.url} 
-                target="_blank" 
+              <motion.a
+                key={i}
+                href={link.url}
+                target="_blank"
                 rel="noreferrer"
                 className="mc-slot p-4 flex flex-col items-center gap-2 hover:bg-[#333] transition-colors"
                 whileHover={{ scale: 1.05, y: -4 }}
