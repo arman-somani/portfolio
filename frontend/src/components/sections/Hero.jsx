@@ -161,7 +161,7 @@ const Hero = ({ isDark }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2 }}
-          className="mt-6 text-xl md:text-3xl text-white max-w-2xl mx-auto leading-relaxed"
+          className="mt-4 md:mt-6 text-sm sm:text-lg md:text-xl lg:text-3xl text-white max-w-2xl mx-auto leading-relaxed"
           style={{ textShadow: '2px 2px 0px rgba(0,0,0,0.5)' }}
         >
           Building digital worlds, one block at a time.

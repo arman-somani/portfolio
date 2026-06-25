@@ -36,7 +36,7 @@ const About = () => {
           <div className="w-10 h-10 bg-[var(--mc-gold)] mc-block flex items-center justify-center">
             <span className="text-black text-2xl">?</span>
           </div>
-          <h2 className="font-pixel text-3xl md:text-4xl text-[var(--mc-gold)]">About Me</h2>
+          <h2 className="font-pixel text-xl sm:text-3xl md:text-4xl text-[var(--mc-gold)]">About Me</h2>
         </div>
       </div>
 
@@ -48,11 +48,11 @@ const About = () => {
         <div className="bg-[#9C6B30] mc-block p-8 md:p-12 relative">
           <div className="absolute inset-0 mc-texture opacity-30 pointer-events-none"></div>
           <div className="relative z-10">
-            <p className="text-xl md:text-2xl text-white leading-relaxed" style={{ textShadow: '2px 2px 0px rgba(0,0,0,0.3)' }}>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white leading-relaxed" style={{ textShadow: '2px 2px 0px rgba(0,0,0,0.3)' }}>
               Hey there! I turn ideas into high-performance digital experiences. As a <span className="text-[var(--mc-diamond)]">Full Stack Developer</span>, I specialize in designing responsive user interfaces, developing scalable backend systems, and building complete web applications from concept to deployment.
             </p>
             <div className="mt-6 h-1 bg-[var(--mc-wood)]"></div>
-            <p className="mt-6 text-lg md:text-xl text-white/80 leading-relaxed" style={{ textShadow: '2px 2px 0px rgba(0,0,0,0.3)' }}>
+            <p className="mt-4 md:mt-6 text-sm sm:text-base md:text-lg lg:text-xl text-white/80 leading-relaxed" style={{ textShadow: '2px 2px 0px rgba(0,0,0,0.3)' }}>
               I love working with React, Next.js, Node.js, Express, MongoDB, TypeScript, Tailwind CSS, and modern animation libraries to create applications that are both powerful and visually impressive. I'm always exploring new technologies, currently focusing on <span className="text-[var(--mc-emerald)]">AI integration, cloud infrastructure, Docker, Kubernetes</span>, and advanced web performance optimization to build the next generation of web applications.
             </p>
           </div>
@@ -75,7 +75,7 @@ const About = () => {
             transition={{ type: 'spring', stiffness: 200, delay: i * 0.1 }}
             className="bg-[#6B4226] mc-slot p-6 text-center hover:bg-[#7A5E3E] transition-colors"
           >
-            <div className="font-pixel text-xl md:text-3xl mb-2" style={{ color: stat.color, textShadow: '2px 2px 0px rgba(0,0,0,0.5)' }}>
+            <div className="font-pixel text-lg sm:text-xl md:text-3xl mb-2" style={{ color: stat.color, textShadow: '2px 2px 0px rgba(0,0,0,0.5)' }}>
               {stat.value}
             </div>
             <div className="font-pixel text-[8px] text-white/60 tracking-wider">
