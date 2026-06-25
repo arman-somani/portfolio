@@ -57,7 +57,7 @@ const FooterCurtain = () => {
         <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex gap-8">
             <MagneticButton><a href="https://twitter.com" target="_blank" rel="noreferrer" className="text-white/50 hover:text-white font-sans text-xs uppercase tracking-widest transition-colors">Twitter (X)</a></MagneticButton>
-            <MagneticButton><a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-white/50 hover:text-white font-sans text-xs uppercase tracking-widest transition-colors">LinkedIn</a></MagneticButton>
+            <MagneticButton><a href="https://www.linkedin.com/public-profile/settings/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BEuTs%2FanRRGenDOBMyN%2BQKg%3D%3D" target="_blank" rel="noreferrer" className="text-white/50 hover:text-white font-sans text-xs uppercase tracking-widest transition-colors">LinkedIn</a></MagneticButton>
             <MagneticButton><a href="https://github.com" target="_blank" rel="noreferrer" className="text-white/50 hover:text-white font-sans text-xs uppercase tracking-widest transition-colors">GitHub</a></MagneticButton>
           </div>
           

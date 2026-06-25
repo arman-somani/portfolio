@@ -89,11 +89,11 @@ const ChatConsole = () => {
       </button>
 
       {isOpen && (
-        <div className="w-[400px] bg-[#2C2C2C]/95 mc-block overflow-hidden max-w-[90vw]">
+        <div className="w-[600px] bg-[#2C2C2C]/95 mc-block overflow-hidden max-w-[90vw]">
           {/* Messages */}
-          <div className="h-64 overflow-y-auto p-4 space-y-2 no-scrollbar">
+          <div className="h-80 overflow-y-auto p-4 space-y-2 no-scrollbar">
             {messages.map((msg, i) => (
-              <p key={i} className="text-base leading-relaxed" style={{ color: msg.color, textShadow: '1px 1px 0px rgba(0,0,0,0.5)' }}>
+              <p key={i} className="text-lg leading-relaxed" style={{ color: msg.color, textShadow: '1px 1px 0px rgba(0,0,0,0.5)' }}>
                 {msg.text}
               </p>
             ))}
@@ -107,10 +107,10 @@ const ChatConsole = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Say something..."
-              className="flex-1 bg-[#1a1a1a] text-white text-base px-3 py-2 mc-block-inset outline-none placeholder:text-white/30 font-[VT323]"
+              className="flex-1 bg-[#1a1a1a] text-white text-lg px-3 py-2 mc-block-inset outline-none placeholder:text-white/30 font-[VT323]"
               style={{ cursor: 'text' }}
             />
-            <button type="submit" className="mc-btn !text-[9px] !py-1 !px-4">
+            <button type="submit" className="mc-btn !text-[10px] !py-2 !px-4">
               ➤
             </button>
           </form>
