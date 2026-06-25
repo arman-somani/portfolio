@@ -55,7 +55,7 @@ const Hero = ({ isDark }) => {
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
-  const titleLetters = "ARMAN".split("");
+  const titleLetters = "ARMAN SOMANI".split("");
 
   // Generate random stars for night mode
   const stars = Array.from({ length: 40 }, (_, i) => ({
@@ -112,11 +112,14 @@ const Hero = ({ isDark }) => {
 
       {/* Main Content with parallax */}
       <motion.div style={{ y: contentY, opacity: contentOpacity }} className="relative z-10 text-center px-4">
-        <div className="flex justify-center gap-1 md:gap-2 mb-4">
+        <div className="flex flex-wrap justify-center gap-1 md:gap-2 mb-4 max-w-4xl mx-auto">
           {titleLetters.map((letter, i) => (
+            letter === " " ? (
+              <div key={i} className="w-4 md:w-8"></div>
+            ) : (
             <motion.div
               key={i}
-              className="w-16 h-16 md:w-24 md:h-24 bg-[var(--mc-stone)] mc-block flex items-center justify-center cursor-pointer"
+              className="w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 bg-[var(--mc-stone)] mc-block flex items-center justify-center cursor-pointer"
               initial={{ y: -300, rotate: -180 }}
               animate={{ y: 0, rotate: 0 }}
               whileHover={{ 
@@ -133,10 +136,11 @@ const Hero = ({ isDark }) => {
                 delay: 0.5 + (i * 0.15) 
               }}
             >
-              <span className="text-3xl md:text-5xl font-pixel text-[var(--mc-gold)] select-none" style={{ textShadow: '3px 3px 0px rgba(0,0,0,0.5)' }}>
+              <span className="text-2xl sm:text-3xl md:text-5xl font-pixel text-[var(--mc-gold)] select-none" style={{ textShadow: '3px 3px 0px rgba(0,0,0,0.5)' }}>
                 {letter}
               </span>
             </motion.div>
+            )
           ))}
         </div>
 

@@ -34,7 +34,7 @@ const Navbar = () => {
             onClick={() => window.scrollTo(0, 0)}
           >
             <Code2 className="w-8 h-8 text-primary" />
-            <span className="text-2xl font-bold text-gradient tracking-tight">Portfolio</span>
+            <span className="text-xl md:text-2xl font-bold text-gradient tracking-tight">ARMAN SOMANI</span>
           </motion.div>
 
           {/* Desktop Menu */}
