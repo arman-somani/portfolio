@@ -6,7 +6,7 @@ const Experience = () => {
   const experiences = [
     { 
       _id: '1', 
-      title: '15+ Projects Built', 
+      title: '3+ Projects Built', 
       description: 'Developed full-stack web applications from concept to deployment using modern technologies.',
       current: true
     },
