@@ -3,32 +3,12 @@ import { motion } from 'framer-motion';
 import api from '../../services/api';
 
 const Experience = () => {
-  const [experiences, setExperiences] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchExperiences = async () => {
-      try {
-        const { data } = await api.get('/experience');
-        if (data && data.length > 0) {
-          setExperiences(data);
-        } else {
-          throw new Error('Database connected but empty');
-        }
-      } catch (error) {
-        console.error('Error fetching experiences, using fallback data', error);
-        setExperiences([
-          { _id: '1', title: 'Senior Developer', company: 'Creative Agency Co.', startDate: '2023', endDate: 'Present', current: true, description: 'Leading the architecture and development of enterprise-grade web applications.' },
-          { _id: '2', title: 'Frontend Engineer', company: 'Tech Startup Inc.', startDate: '2020', endDate: '2023', current: false, description: 'Built pixel-perfect, accessible React components and designed micro-interactions.' },
-          { _id: '3', title: 'Junior Developer', company: 'Digital Solutions LLC', startDate: '2018', endDate: '2020', current: false, description: 'Started my coding journey building responsive websites and learning the MERN stack.' }
-        ]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchExperiences();
-  }, []);
+  const experiences = [
+    { _id: '1', title: 'Senior Developer', company: 'Creative Agency Co.', startDate: '2023', endDate: 'Present', current: true, description: 'Leading the architecture and development of enterprise-grade web applications.' },
+    { _id: '2', title: 'Frontend Engineer', company: 'Tech Startup Inc.', startDate: '2020', endDate: '2023', current: false, description: 'Built pixel-perfect, accessible React components and designed micro-interactions.' },
+    { _id: '3', title: 'Junior Developer', company: 'Digital Solutions LLC', startDate: '2018', endDate: '2020', current: false, description: 'Started my coding journey building responsive websites and learning the MERN stack.' }
+  ];
+  const loading = false;
 
   return (
     <section id="experience" className="min-h-screen py-32 px-6 relative overflow-hidden mc-tex-deepslate">

@@ -3,33 +3,13 @@ import { motion } from 'framer-motion';
 import api from '../../services/api';
 
 const Projects = () => {
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const { data } = await api.get('/projects');
-        if (data && data.length > 0) {
-          setProjects(data);
-        } else {
-          throw new Error('Database connected but empty');
-        }
-      } catch (error) {
-        console.error('Error fetching projects, using fallback data', error);
-        setProjects([
-          { _id: '1', title: 'Block Builder', description: 'A 3D voxel world construction tool built with Three.js.', image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop', technologies: ['React', 'Three.js', 'Node.js'] },
-          { _id: '2', title: 'Pixel Trader', description: 'A real-time crypto trading dashboard with retro aesthetics.', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop', technologies: ['Next.js', 'WebSocket', 'MongoDB'] },
-          { _id: '3', title: 'Craft CMS', description: 'A headless content management system for indie game developers.', image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop', technologies: ['TypeScript', 'PostgreSQL', 'GraphQL'] },
-          { _id: '4', title: 'Nether Portal', description: 'An AI-powered search engine for documentation.', image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop', technologies: ['Python', 'FastAPI', 'React'] },
-        ]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, []);
+  const projects = [
+    { _id: '1', title: 'Block Builder', description: 'A 3D voxel world construction tool built with Three.js.', image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop', technologies: ['React', 'Three.js', 'Node.js'] },
+    { _id: '2', title: 'Pixel Trader', description: 'A real-time crypto trading dashboard with retro aesthetics.', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop', technologies: ['Next.js', 'WebSocket', 'MongoDB'] },
+    { _id: '3', title: 'Craft CMS', description: 'A headless content management system for indie game developers.', image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop', technologies: ['TypeScript', 'PostgreSQL', 'GraphQL'] },
+    { _id: '4', title: 'Nether Portal', description: 'An AI-powered search engine for documentation.', image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop', technologies: ['Python', 'FastAPI', 'React'] },
+  ];
+  const loading = false;
 
   return (
     <section id="projects" className="min-h-screen py-32 px-6 relative overflow-hidden mc-tex-obsidian">
