@@ -30,7 +30,9 @@ mountRoutes('/api/');
 mountRoutes('/');
 
 // Database Connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/portfolio')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/portfolio', {
+  serverSelectionTimeoutMS: 2000, // Fail fast if MongoDB isn't configured so the frontend can load fallback data instantly
+})
   .then(() => {
     console.log('Connected to MongoDB');
   })
