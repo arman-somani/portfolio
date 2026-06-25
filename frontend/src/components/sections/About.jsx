@@ -12,8 +12,8 @@ const About = () => {
   const signOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
   return (
-    <section 
-      id="about" 
+    <section
+      id="about"
       ref={containerRef}
       className="min-h-screen py-32 px-6 relative overflow-hidden mc-tex-dirt"
     >
@@ -41,7 +41,7 @@ const About = () => {
       </div>
 
       {/* Oak Sign Post */}
-      <motion.div 
+      <motion.div
         className="max-w-4xl mx-auto relative z-10"
         style={{ y: signY, opacity: signOpacity }}
       >
@@ -61,11 +61,10 @@ const About = () => {
       </motion.div>
 
       {/* Stats blocks */}
-      <div className="max-w-4xl mx-auto mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 relative z-10">
+      <div className="max-w-3xl mx-auto mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 relative z-10">
         {[
-          { label: 'PROJECTS', value: '50+', color: 'var(--mc-diamond)' },
-          { label: 'EXPERIENCE', value: '5 YRS', color: 'var(--mc-gold)' },
-          { label: 'CLIENTS', value: '30+', color: 'var(--mc-emerald)' },
+          { label: 'PROJECTS', value: '3+', color: 'var(--mc-diamond)' },
+          { label: 'EXPERIENCE', value: '2 YRS', color: 'var(--mc-gold)' },
           { label: 'COMMITS', value: '2K+', color: 'var(--mc-redstone)' },
         ].map((stat, i) => (
           <motion.div
