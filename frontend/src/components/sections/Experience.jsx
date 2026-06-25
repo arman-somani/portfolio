@@ -237,10 +237,7 @@ const Experience = () => {
         )}
       </div>
 
-      {/* Transition to deep cave / projects */}
-      <div className="absolute bottom-0 left-0 right-0 h-24"
-        style={{ background: 'linear-gradient(180deg, transparent 0%, #2A1A0E 100%)' }}
-      ></div>
+
     </section>
   );
 };

@@ -220,10 +220,7 @@ const Skills = () => {
         </div>
       </div>
 
-      {/* Transition to cave */}
-      <div className="absolute bottom-0 left-0 right-0 h-32"
-        style={{ background: 'linear-gradient(180deg, transparent 0%, #3A3A3A 100%)' }}
-      ></div>
+
     </section>
   );
 };
