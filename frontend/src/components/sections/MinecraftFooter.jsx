@@ -6,6 +6,7 @@ const MinecraftFooter = () => {
   const [time, setTime] = useState('');
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     const updateTime = () => {
@@ -27,8 +28,10 @@ const MinecraftFooter = () => {
       setTimeout(() => setStatus('idle'), 5000);
     } catch (error) {
       console.error(error);
+      const msg = error.response?.data?.message || error.message || 'UNKNOWN ERROR';
+      setErrorMessage(msg.toUpperCase());
       setStatus('error');
-      setTimeout(() => setStatus('idle'), 5000);
+      setTimeout(() => setStatus('idle'), 8000);
     }
   };
 
@@ -113,7 +116,7 @@ const MinecraftFooter = () => {
                 />
                 
                 {status === 'success' && <div className="text-[var(--mc-emerald)] font-pixel text-[10px] text-center">MESSAGE SENT SUCCESSFULLY!</div>}
-                {status === 'error' && <div className="text-[var(--mc-redstone)] font-pixel text-[10px] text-center">ERROR SENDING MESSAGE!</div>}
+                {status === 'error' && <div className="text-[var(--mc-redstone)] font-pixel text-[10px] text-center">ERROR: {errorMessage}</div>}
 
                 <motion.button 
                   type="submit"
