@@ -30,6 +30,7 @@ mountRoutes('/api/');
 mountRoutes('/');
 
 // Database Connection
+mongoose.set('bufferTimeoutMS', 2000); // Fail fast if DB isn't connected so operations don't hang
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/portfolio', {
   serverSelectionTimeoutMS: 2000, // Fail fast if MongoDB isn't configured so the frontend can load fallback data instantly
 })
