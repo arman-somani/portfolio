@@ -89,7 +89,7 @@ const ChatConsole = () => {
       </button>
 
       {isOpen && (
-        <div className="w-[600px] bg-[#2C2C2C]/95 mc-block overflow-hidden max-w-[90vw]">
+        <div className="w-[500px] bg-[#2C2C2C]/95 mc-block overflow-hidden max-w-[90vw]">
           {/* Messages */}
           <div className="h-80 overflow-y-auto p-4 space-y-2 no-scrollbar">
             {messages.map((msg, i) => (
