@@ -137,7 +137,7 @@ const MinecraftFooter = () => {
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-12 max-w-3xl mx-auto">
             {[
               { label: 'GitHub', icon: '📦', url: 'https://github.com/arman-somani' },
-              { label: 'LinkedIn', icon: '🔗', url: 'https://www.linkedin.com/public-profile/settings/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BEuTs%2FanRRGenDOBMyN%2BQKg%3D%3D' },
+              { label: 'LinkedIn', icon: '🔗', url: 'https://www.linkedin.com/in/arman-somani' },
               { label: 'Email', icon: '✉', url: 'mailto:armansomani786@gmail.com' },
               { label: 'Instagram', icon: '📸', url: 'https://www.instagram.com/arman_somani' },
             ].map((link, i) => (
