@@ -4,7 +4,7 @@ import api from '../../services/api';
 
 const Projects = () => {
   const projects = [
-    { _id: '1', title: 'Block Builder', description: 'A 3D voxel world construction tool built with Three.js.', image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop', technologies: ['React', 'Three.js', 'Node.js'] },
+    { _id: '1', title: 'Media Toolkit', description: 'A comprehensive web application for processing and manipulating media files effortlessly.', image: 'https://image.thum.io/get/width/1200/crop/800/https://mediatoolkit.vercel.app', technologies: ['React', 'Next.js', 'Tailwind'], url: 'https://mediatoolkit.vercel.app' },
     { _id: '2', title: 'Pixel Trader', description: 'A real-time crypto trading dashboard with retro aesthetics.', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop', technologies: ['Next.js', 'WebSocket', 'MongoDB'] },
     { _id: '3', title: 'Craft CMS', description: 'A headless content management system for indie game developers.', image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop', technologies: ['TypeScript', 'PostgreSQL', 'GraphQL'] },
     { _id: '4', title: 'Nether Portal', description: 'An AI-powered search engine for documentation.', image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop', technologies: ['Python', 'FastAPI', 'React'] },
@@ -116,13 +116,16 @@ const Projects = () => {
                   ))}
                 </div>
                 <div className="mt-6">
-                  <motion.button
-                    className="mc-btn !text-[8px] !py-2 w-full !bg-[#555] hover:!bg-[#7B68EE]"
+                  <motion.a
+                    href={project.url || '#'}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mc-btn !text-[8px] !py-2 w-full !bg-[#555] hover:!bg-[#7B68EE] block text-center"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     🔍 INSPECT PROJECT
-                  </motion.button>
+                  </motion.a>
                 </div>
               </div>
             </motion.div>
