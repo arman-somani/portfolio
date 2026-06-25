@@ -4,7 +4,7 @@ import api from '../../services/api';
 
 const Projects = () => {
   const projects = [
-    { _id: '1', title: 'Media Toolkit', description: 'A comprehensive web application for processing and manipulating media files effortlessly.', image: 'https://iad.microlink.io/tBhUmNJowgAec6KBHkg7HsIZzxnMOFMozXFSXMhsKFFISVE4l6Hlsgliknd4HIO5wiOkvr8GPxIFcl1DiBS_7g.png', technologies: ['React', 'Next.js', 'Tailwind'], url: 'https://mediatoolkit.vercel.app' },
+    { _id: '1', title: 'Media Toolkit', description: 'A comprehensive web application for processing and manipulating media files effortlessly.', image: '/mediatoolkit.png', technologies: ['React', 'Next.js', 'Tailwind'], url: 'https://mediatoolkit.vercel.app' },
     { _id: '2', title: 'Pixel Trader', description: 'A real-time crypto trading dashboard with retro aesthetics.', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop', technologies: ['Next.js', 'WebSocket', 'MongoDB'] },
     { _id: '3', title: 'Craft CMS', description: 'A headless content management system for indie game developers.', image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop', technologies: ['TypeScript', 'PostgreSQL', 'GraphQL'] },
     { _id: '4', title: 'Nether Portal', description: 'An AI-powered search engine for documentation.', image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop', technologies: ['Python', 'FastAPI', 'React'] },
