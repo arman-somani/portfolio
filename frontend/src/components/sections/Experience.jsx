@@ -203,31 +203,31 @@ const Experience = () => {
 
                 <motion.div
                   whileHover={{ scale: 1.02, rotate: 1 }}
-                  className="bg-[#2C2C2C] mc-block p-8 relative group origin-top"
+                  className="bg-[#2C2C2C] mc-block p-4 sm:p-6 md:p-8 relative group origin-top"
                 >
-                  <div className="flex items-center gap-3 mb-5">
-                    <span className="text-3xl">🏆</span>
-                    <div className="font-pixel text-[10px] text-[var(--mc-gold)] bg-[var(--mc-gold)]/10 px-3 py-2 mc-block-inset">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-4 md:mb-5">
+                    <span className="text-2xl md:text-3xl">🏆</span>
+                    <div className="font-pixel text-[8px] md:text-[10px] text-[var(--mc-gold)] bg-[var(--mc-gold)]/10 px-2 md:px-3 py-1 md:py-2 mc-block-inset w-fit">
                       ACHIEVEMENT UNLOCKED!
                     </div>
                   </div>
 
-                  <h3 className="font-pixel text-sm md:text-base text-white mb-3">{exp.title}</h3>
-                  <p className="font-pixel text-[10px] text-[var(--mc-diamond)] mb-5">{exp.company}</p>
+                  <h3 className="font-pixel text-xs md:text-sm lg:text-base text-white mb-2 md:mb-3">{exp.title}</h3>
+                  <p className="font-pixel text-[8px] md:text-[10px] text-[var(--mc-diamond)] mb-4 md:mb-5">{exp.company}</p>
                   
-                  <p className="text-2xl text-white/70 leading-relaxed mb-6" style={{ textShadow: '1px 1px 0px rgba(0,0,0,0.3)' }}>
+                  <p className="text-base md:text-lg lg:text-xl text-white/70 leading-relaxed mb-5 md:mb-6" style={{ textShadow: '1px 1px 0px rgba(0,0,0,0.3)' }}>
                     {exp.description}
                   </p>
 
-                  <div className="flex items-center gap-3 mt-5">
-                    <div className="mc-slot px-4 py-2">
-                      <span className="font-pixel text-[10px] text-white/60">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mt-4 md:mt-5">
+                    <div className="mc-slot px-3 md:px-4 py-1.5 md:py-2 w-fit">
+                      <span className="font-pixel text-[8px] md:text-[10px] text-white/60">
                         {exp.startDate} — {exp.current ? 'Present' : exp.endDate}
                       </span>
                     </div>
                     {exp.current && (
-                      <div className="bg-[var(--mc-emerald)]/20 border-2 border-[var(--mc-emerald)] px-4 py-2">
-                        <span className="font-pixel text-[10px] text-[var(--mc-emerald)]">ACTIVE</span>
+                      <div className="bg-[var(--mc-emerald)]/20 border-2 border-[var(--mc-emerald)] px-3 md:px-4 py-1.5 md:py-2 w-fit">
+                        <span className="font-pixel text-[8px] md:text-[10px] text-[var(--mc-emerald)]">ACTIVE</span>
                       </div>
                     )}
                   </div>
