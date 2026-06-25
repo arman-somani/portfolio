@@ -4,9 +4,22 @@ import api from '../../services/api';
 
 const Experience = () => {
   const experiences = [
-    { _id: '1', title: 'Senior Developer', company: 'Creative Agency Co.', startDate: '2023', endDate: 'Present', current: true, description: 'Leading the architecture and development of enterprise-grade web applications.' },
-    { _id: '2', title: 'Frontend Engineer', company: 'Tech Startup Inc.', startDate: '2020', endDate: '2023', current: false, description: 'Built pixel-perfect, accessible React components and designed micro-interactions.' },
-    { _id: '3', title: 'Junior Developer', company: 'Digital Solutions LLC', startDate: '2018', endDate: '2020', current: false, description: 'Started my coding journey building responsive websites and learning the MERN stack.' }
+    { 
+      _id: '1', 
+      title: '15+ Projects Built', 
+      description: 'Developed full-stack web applications from concept to deployment using modern technologies.',
+      current: true
+    },
+    { 
+      _id: '2', 
+      title: '30+ Technologies Explored', 
+      description: 'Worked with frontend, backend, databases, authentication, APIs, deployment, and animation libraries.'
+    },
+    { 
+      _id: '3', 
+      title: 'Always Learning', 
+      description: 'Continuously expanding skills in AI, cloud computing, Docker, DevOps, and scalable system design.' 
+    }
   ];
   const loading = false;
 
@@ -193,24 +206,30 @@ const Experience = () => {
                   </div>
 
                   <h3 className="font-pixel text-xs md:text-sm lg:text-base text-white mb-2 md:mb-3">{exp.title}</h3>
-                  <p className="font-pixel text-[8px] md:text-[10px] text-[var(--mc-diamond)] mb-4 md:mb-5">{exp.company}</p>
+                  {exp.company && (
+                    <p className="font-pixel text-[8px] md:text-[10px] text-[var(--mc-diamond)] mb-4 md:mb-5">{exp.company}</p>
+                  )}
                   
                   <p className="text-base md:text-lg lg:text-xl text-white/70 leading-relaxed mb-5 md:mb-6" style={{ textShadow: '1px 1px 0px rgba(0,0,0,0.3)' }}>
                     {exp.description}
                   </p>
 
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mt-4 md:mt-5">
-                    <div className="mc-slot px-3 md:px-4 py-1.5 md:py-2 w-fit">
-                      <span className="font-pixel text-[8px] md:text-[10px] text-white/60">
-                        {exp.startDate} — {exp.current ? 'Present' : exp.endDate}
-                      </span>
+                  {(exp.startDate || exp.current) && (
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mt-4 md:mt-5">
+                      {exp.startDate && (
+                        <div className="mc-slot px-3 md:px-4 py-1.5 md:py-2 w-fit">
+                          <span className="font-pixel text-[8px] md:text-[10px] text-white/60">
+                            {exp.startDate} — {exp.current ? 'Present' : exp.endDate}
+                          </span>
+                        </div>
+                      )}
+                      {exp.current && (
+                        <div className="bg-[var(--mc-emerald)]/20 border-2 border-[var(--mc-emerald)] px-3 md:px-4 py-1.5 md:py-2 w-fit">
+                          <span className="font-pixel text-[8px] md:text-[10px] text-[var(--mc-emerald)]">ACTIVE</span>
+                        </div>
+                      )}
                     </div>
-                    {exp.current && (
-                      <div className="bg-[var(--mc-emerald)]/20 border-2 border-[var(--mc-emerald)] px-3 md:px-4 py-1.5 md:py-2 w-fit">
-                        <span className="font-pixel text-[8px] md:text-[10px] text-[var(--mc-emerald)]">ACTIVE</span>
-                      </div>
-                    )}
-                  </div>
+                  )}
                 </motion.div>
               </div>
             </motion.div>
