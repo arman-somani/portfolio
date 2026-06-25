@@ -134,11 +134,10 @@ const MinecraftFooter = () => {
           </div>
 
           {/* Links */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          <div className="grid grid-cols-3 gap-4 mb-12 max-w-3xl mx-auto">
             {[
-              { label: 'GitHub', icon: '📦', url: 'https://github.com' },
+              { label: 'GitHub', icon: '📦', url: 'https://github.com/arman-somani' },
               { label: 'LinkedIn', icon: '🔗', url: 'https://linkedin.com' },
-              { label: 'Twitter', icon: '🐦', url: 'https://twitter.com' },
               { label: 'Email', icon: '✉', url: 'mailto:armansomani786@gmail.com' },
             ].map((link, i) => (
               <motion.a
