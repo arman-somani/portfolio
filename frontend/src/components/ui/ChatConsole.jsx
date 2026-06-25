@@ -26,17 +26,56 @@ const ChatConsole = () => {
 
   const handleSend = (e) => {
     e.preventDefault();
-    if (!input.trim()) return;
+    const trimmed = input.trim();
+    if (!trimmed) return;
 
-    setMessages(prev => [...prev, { text: `<You> ${input}`, color: '#fff' }]);
+    setMessages(prev => [...prev, { text: `<You> ${trimmed}`, color: '#fff' }]);
+    setInput('');
+
+    // Check for commands
+    if (trimmed.startsWith('/')) {
+      const command = trimmed.toLowerCase();
+      
+      if (command === '/help') {
+        setTimeout(() => {
+          setMessages(prev => [...prev, { text: '[Server] Available commands: /help, /about, /skills, /projects, /experience, /contact, /clear, /gamemode c', color: 'var(--mc-gold)' }]);
+        }, 300);
+      } else if (command === '/clear') {
+        setTimeout(() => {
+          setMessages([{ text: '[Server] Chat cleared.', color: 'var(--mc-gold)' }]);
+        }, 100);
+      } else if (['/about', '/skills', '/projects', '/experience', '/contact'].includes(command)) {
+        const sectionId = command.replace('/', '');
+        setTimeout(() => {
+          const section = document.getElementById(sectionId);
+          if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+            setMessages(prev => [...prev, { text: `[Server] Teleporting to ${sectionId}...`, color: 'var(--mc-gold)' }]);
+          } else {
+            setMessages(prev => [...prev, { text: `[Server] Error: Section ${sectionId} not found.`, color: '#ff5555' }]);
+          }
+        }, 300);
+      } else if (command === '/gamemode c' || command === '/gamemode creative') {
+        setTimeout(() => {
+          setMessages(prev => [...prev, { text: '[Server] Your game mode has been updated to Creative Mode.', color: 'var(--mc-gold)' }]);
+        }, 300);
+      } else if (command === '/time set day') {
+        setTimeout(() => {
+          setMessages(prev => [...prev, { text: '[Server] Set the time to 1000', color: 'var(--mc-gold)' }]);
+        }, 300);
+      } else {
+        setTimeout(() => {
+          setMessages(prev => [...prev, { text: `[Server] Unknown command: ${trimmed}. Type /help for a list of commands.`, color: '#ff5555' }]);
+        }, 300);
+      }
+      return;
+    }
     
     // Bot reply after delay
     const reply = botResponses[Math.floor(Math.random() * botResponses.length)];
     setTimeout(() => {
       setMessages(prev => [...prev, { text: `[Arman] ${reply}`, color: 'var(--mc-diamond)' }]);
     }, 800);
-
-    setInput('');
   };
 
   return (
