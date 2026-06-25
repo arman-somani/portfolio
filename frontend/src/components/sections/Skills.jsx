@@ -50,7 +50,7 @@ const skillCategories = [
     title: 'Tools',
     skills: [
       { name: 'VS Code', icon: '💻', color: '#007ACC', rarity: 'COMMON', desc: '+20% Editing', enchanted: false },
-      { name: 'Postman', icon: '🚀', color: '#FF6C37', rarity: 'RARE', desc: '+25% API Testing', enchanted: false },
+      { name: 'AI', icon: '🤖', color: '#10A37F', rarity: 'EPIC', desc: '+30% Automation', enchanted: true },
       { name: 'Figma', icon: '🎯', color: '#F24E1E', rarity: 'RARE', desc: '+30% Design Vision', enchanted: false },
       { name: 'Firebase', icon: '🔥', color: '#FFCA28', rarity: 'EPIC', desc: '+40% BaaS', enchanted: true },
       { name: 'Cloudinary', icon: '☁️', color: '#3448C5', rarity: 'RARE', desc: '+25% Media', enchanted: false },
