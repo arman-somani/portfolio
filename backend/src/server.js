@@ -17,12 +17,17 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Routes
-app.use('/api/projects', projectRoutes);
-app.use('/api/skills', skillRoutes);
-app.use('/api/experience', experienceRoutes);
-app.use('/api/contact', contactRoutes);
-app.use('/api/auth', authRoutes);
+// Mount routes on both /api and / to support both local development and Vercel serverless
+const mountRoutes = (prefix) => {
+  app.use(`${prefix}projects`, projectRoutes);
+  app.use(`${prefix}skills`, skillRoutes);
+  app.use(`${prefix}experience`, experienceRoutes);
+  app.use(`${prefix}contact`, contactRoutes);
+  app.use(`${prefix}auth`, authRoutes);
+};
+
+mountRoutes('/api/');
+mountRoutes('/');
 
 // Database Connection
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/portfolio')
