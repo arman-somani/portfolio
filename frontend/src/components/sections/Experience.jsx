@@ -150,13 +150,13 @@ const Experience = () => {
 
       {/* Section header */}
       <div className="max-w-5xl mx-auto mb-16 relative z-10">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="w-8 h-8 bg-[var(--mc-emerald)] mc-block flex items-center justify-center">
-            <span className="text-black text-lg">📜</span>
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-10 h-10 bg-[var(--mc-emerald)] mc-block flex items-center justify-center">
+            <span className="text-black text-2xl">📜</span>
           </div>
-          <h2 className="font-pixel text-lg md:text-2xl text-[var(--mc-emerald)]">Achievements</h2>
+          <h2 className="font-pixel text-3xl md:text-4xl text-[var(--mc-emerald)]">Achievements</h2>
         </div>
-        <p className="text-xl text-white/60 mt-2" style={{ textShadow: '1px 1px 0px rgba(0,0,0,0.3)' }}>
+        <p className="text-2xl text-white/60 mt-2" style={{ textShadow: '1px 1px 0px rgba(0,0,0,0.3)' }}>
           Deep in the cave, discover my journey.
         </p>
       </div>
@@ -190,8 +190,8 @@ const Experience = () => {
                 i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
               } flex-row`}
             >
-              <div className="absolute left-[22px] md:left-1/2 md:-translate-x-1/2 w-6 h-6 bg-[var(--mc-gold)] mc-block z-10 flex items-center justify-center">
-                <span className="text-[8px] text-black font-bold">{i + 1}</span>
+              <div className="absolute left-[20px] md:left-1/2 md:-translate-x-1/2 w-8 h-8 bg-[var(--mc-gold)] mc-block z-10 flex items-center justify-center">
+                <span className="text-sm text-black font-bold">{i + 1}</span>
               </div>
 
               <div className={`ml-16 md:ml-0 ${i % 2 === 0 ? 'md:mr-auto md:pr-16' : 'md:ml-auto md:pl-16'} md:w-[45%] w-full`}>
@@ -199,31 +199,31 @@ const Experience = () => {
 
                 <motion.div
                   whileHover={{ scale: 1.02, rotate: 1 }}
-                  className="bg-[#2C2C2C] mc-block p-6 relative group origin-top"
+                  className="bg-[#2C2C2C] mc-block p-8 relative group origin-top"
                 >
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="text-xl">🏆</span>
-                    <div className="font-pixel text-[7px] text-[var(--mc-gold)] bg-[var(--mc-gold)]/10 px-2 py-1 mc-block-inset">
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="text-3xl">🏆</span>
+                    <div className="font-pixel text-[10px] text-[var(--mc-gold)] bg-[var(--mc-gold)]/10 px-3 py-2 mc-block-inset">
                       ACHIEVEMENT UNLOCKED!
                     </div>
                   </div>
 
-                  <h3 className="font-pixel text-[10px] md:text-xs text-white mb-2">{exp.title}</h3>
-                  <p className="font-pixel text-[8px] text-[var(--mc-diamond)] mb-4">{exp.company}</p>
+                  <h3 className="font-pixel text-sm md:text-base text-white mb-3">{exp.title}</h3>
+                  <p className="font-pixel text-[10px] text-[var(--mc-diamond)] mb-5">{exp.company}</p>
                   
-                  <p className="text-lg text-white/70 leading-relaxed mb-4" style={{ textShadow: '1px 1px 0px rgba(0,0,0,0.3)' }}>
+                  <p className="text-2xl text-white/70 leading-relaxed mb-6" style={{ textShadow: '1px 1px 0px rgba(0,0,0,0.3)' }}>
                     {exp.description}
                   </p>
 
-                  <div className="flex items-center gap-2 mt-4">
-                    <div className="mc-slot px-3 py-1">
-                      <span className="font-pixel text-[7px] text-white/60">
+                  <div className="flex items-center gap-3 mt-5">
+                    <div className="mc-slot px-4 py-2">
+                      <span className="font-pixel text-[10px] text-white/60">
                         {exp.startDate} — {exp.current ? 'Present' : exp.endDate}
                       </span>
                     </div>
                     {exp.current && (
-                      <div className="bg-[var(--mc-emerald)]/20 border-2 border-[var(--mc-emerald)] px-3 py-1">
-                        <span className="font-pixel text-[7px] text-[var(--mc-emerald)]">ACTIVE</span>
+                      <div className="bg-[var(--mc-emerald)]/20 border-2 border-[var(--mc-emerald)] px-4 py-2">
+                        <span className="font-pixel text-[10px] text-[var(--mc-emerald)]">ACTIVE</span>
                       </div>
                     )}
                   </div>

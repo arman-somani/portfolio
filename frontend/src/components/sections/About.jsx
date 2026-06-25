@@ -32,11 +32,11 @@ const About = () => {
 
       {/* Section Label */}
       <div className="max-w-5xl mx-auto mb-16 relative z-10">
-        <div className="flex items-center gap-4">
-          <div className="w-8 h-8 bg-[var(--mc-gold)] mc-block flex items-center justify-center">
-            <span className="text-black text-lg">?</span>
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-10 h-10 bg-[var(--mc-gold)] mc-block flex items-center justify-center">
+            <span className="text-black text-2xl">?</span>
           </div>
-          <h2 className="font-pixel text-lg md:text-2xl text-[var(--mc-gold)]">About Me</h2>
+          <h2 className="font-pixel text-3xl md:text-4xl text-[var(--mc-gold)]">About Me</h2>
         </div>
       </div>
 

@@ -58,27 +58,27 @@ const Skills = () => {
       <div className="absolute bottom-[45%] left-[7%] w-5 h-3 bg-[#D4A574] mc-block opacity-35"></div>
 
       {/* Depth indicator */}
-      <div className="absolute top-6 right-6 bg-[#2C2C2C]/80 mc-block px-3 py-2 z-20">
-        <span className="font-pixel text-[7px] text-white/70">Y: 40 — STONE LAYER</span>
+      <div className="absolute top-6 right-6 bg-[#2C2C2C]/80 mc-block px-4 py-3 z-20">
+        <span className="font-pixel text-[10px] text-white/70">Y: 40 — STONE LAYER</span>
       </div>
 
       <div className="max-w-5xl mx-auto mb-16 relative z-10">
         <div className="flex items-center gap-4 mb-4">
-          <div className="w-8 h-8 bg-[var(--mc-diamond)] mc-block flex items-center justify-center">
-            <span className="text-black text-lg">⚒</span>
+          <div className="w-10 h-10 bg-[var(--mc-diamond)] mc-block flex items-center justify-center">
+            <span className="text-black text-2xl">⚒</span>
           </div>
-          <h2 className="font-pixel text-lg md:text-2xl text-[var(--mc-diamond)]">Inventory</h2>
+          <h2 className="font-pixel text-3xl md:text-4xl text-[var(--mc-diamond)]">Inventory</h2>
         </div>
-        <p className="text-xl text-white/60 mt-2" style={{ textShadow: '1px 1px 0px rgba(0,0,0,0.3)' }}>
+        <p className="text-2xl text-white/60 mt-2" style={{ textShadow: '1px 1px 0px rgba(0,0,0,0.3)' }}>
           Click items to equip them. Hover to inspect.
         </p>
       </div>
 
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="bg-[#555]/80 p-4 mc-block">
-          <div className="bg-[#444] mc-block-inset px-4 py-2 mb-4 flex items-center justify-between">
-            <span className="font-pixel text-[10px] text-white/80">SKILLS INVENTORY</span>
-            <span className="font-pixel text-[8px] text-white/40">{skillsData.length} ITEMS</span>
+          <div className="bg-[#444] mc-block-inset px-5 py-3 mb-5 flex items-center justify-between">
+            <span className="font-pixel text-sm text-white/80">SKILLS INVENTORY</span>
+            <span className="font-pixel text-[10px] text-white/40">{skillsData.length} ITEMS</span>
           </div>
           
           <div className="grid grid-cols-3 md:grid-cols-5 gap-3">
@@ -127,14 +127,14 @@ const Skills = () => {
                 </span>
 
                 {/* Tooltip */}
-                <div className={`absolute -top-24 left-1/2 -translate-x-1/2 bg-[#1B0A2E] border-2 rounded px-4 py-3 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-30 ${
+                <div className={`absolute -top-28 left-1/2 -translate-x-1/2 bg-[#1B0A2E] border-2 rounded px-5 py-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-30 ${
                   skill.rarity === 'LEGENDARY' ? 'border-[#FFAA00]' : skill.rarity === 'EPIC' ? 'border-[#AA00AA]' : 'border-[#5555FF]'
                 }`}>
-                  <p className="font-pixel text-[9px] mb-1" style={{ color: skill.color }}>{skill.name}</p>
-                  <p className="font-pixel text-[6px]" style={{ color: rarityColors[skill.rarity] }}>{skill.rarity}</p>
-                  <div className="h-[1px] bg-white/10 my-2"></div>
-                  <p className="text-sm text-[var(--mc-emerald)]">{skill.desc}</p>
-                  {skill.enchanted && <p className="text-sm text-[var(--mc-diamond)] mt-1">✨ Enchanted</p>}
+                  <p className="font-pixel text-xs mb-1" style={{ color: skill.color }}>{skill.name}</p>
+                  <p className="font-pixel text-[8px]" style={{ color: rarityColors[skill.rarity] }}>{skill.rarity}</p>
+                  <div className="h-[2px] bg-white/10 my-2"></div>
+                  <p className="text-base text-[var(--mc-emerald)]">{skill.desc}</p>
+                  {skill.enchanted && <p className="text-base text-[var(--mc-diamond)] mt-1">✨ Enchanted</p>}
                 </div>
 
                 {selectedSlot === i && (
@@ -160,18 +160,18 @@ const Skills = () => {
         </div>
 
         {/* Hotbar */}
-        <div className="mt-8 flex justify-center">
-          <div className="bg-[#555]/80 mc-block p-3">
-            <div className="flex items-center gap-4">
-              <span className="font-pixel text-[7px] text-white/50">EQUIPPED:</span>
+        <div className="mt-10 flex justify-center">
+          <div className="bg-[#555]/80 mc-block p-4">
+            <div className="flex items-center gap-5">
+              <span className="font-pixel text-[10px] text-white/50">EQUIPPED:</span>
               {selectedSlot !== null ? (
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">{skillsData[selectedSlot].icon}</span>
-                  <span className="font-pixel text-[8px]" style={{ color: skillsData[selectedSlot].color }}>{skillsData[selectedSlot].name}</span>
-                  <span className="text-sm text-[var(--mc-emerald)]">{skillsData[selectedSlot].desc}</span>
+                <div className="flex items-center gap-3">
+                  <span className="text-4xl">{skillsData[selectedSlot].icon}</span>
+                  <span className="font-pixel text-[10px]" style={{ color: skillsData[selectedSlot].color }}>{skillsData[selectedSlot].name}</span>
+                  <span className="text-base text-[var(--mc-emerald)]">{skillsData[selectedSlot].desc}</span>
                 </div>
               ) : (
-                <span className="font-pixel text-[7px] text-white/30">Click an item to equip</span>
+                <span className="font-pixel text-[10px] text-white/30">Click an item to equip</span>
               )}
             </div>
           </div>

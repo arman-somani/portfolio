@@ -38,13 +38,13 @@ const Projects = () => {
       ></div>
 
       {/* Lava pools — small glowing patches */}
-      <motion.div 
+      <motion.div
         className="absolute bottom-[5%] left-[15%] w-24 h-4 rounded-sm hidden md:block"
         style={{ backgroundColor: '#CF4913', boxShadow: '0 0 30px rgba(207, 73, 19, 0.5)' }}
         animate={{ opacity: [0.5, 0.8, 0.5] }}
         transition={{ duration: 2, repeat: Infinity }}
       />
-      <motion.div 
+      <motion.div
         className="absolute bottom-[8%] right-[20%] w-16 h-3 rounded-sm hidden md:block"
         style={{ backgroundColor: '#CF4913', boxShadow: '0 0 20px rgba(207, 73, 19, 0.4)' }}
         animate={{ opacity: [0.4, 0.7, 0.4] }}
@@ -58,7 +58,7 @@ const Projects = () => {
 
       {/* Torches */}
       <div className="absolute top-[20%] left-4 z-10 hidden md:block">
-        <motion.div 
+        <motion.div
           className="w-4 h-4 bg-[#FCDB05]"
           animate={{ opacity: [0.5, 1, 0.5], scale: [1, 1.15, 1] }}
           transition={{ duration: 1.2, repeat: Infinity }}
@@ -67,7 +67,7 @@ const Projects = () => {
         <div className="w-2 h-6 bg-[#6B4226] mx-auto"></div>
       </div>
       <div className="absolute top-[60%] right-4 z-10 hidden md:block">
-        <motion.div 
+        <motion.div
           className="w-4 h-4 bg-[#FCDB05]"
           animate={{ opacity: [0.5, 1, 0.5], scale: [1, 1.15, 1] }}
           transition={{ duration: 1.2, repeat: Infinity, delay: 0.6 }}
@@ -78,13 +78,13 @@ const Projects = () => {
 
       {/* Section header */}
       <div className="max-w-5xl mx-auto mb-16 relative z-10">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="w-8 h-8 bg-[var(--mc-lava)] mc-block flex items-center justify-center">
-            <span className="text-white text-lg">⚒</span>
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-10 h-10 bg-[var(--mc-lava)] mc-block flex items-center justify-center">
+            <span className="text-white text-2xl">⚒</span>
           </div>
-          <h2 className="font-pixel text-lg md:text-2xl text-[var(--mc-lava)]">Crafted Works</h2>
+          <h2 className="font-pixel text-3xl md:text-4xl text-[var(--mc-lava)]">Crafted Works</h2>
         </div>
-        <p className="text-xl text-white/60 mt-2" style={{ textShadow: '1px 1px 0px rgba(0,0,0,0.3)' }}>
+        <p className="text-2xl text-white/60 mt-2" style={{ textShadow: '1px 1px 0px rgba(0,0,0,0.3)' }}>
           Forged in the deepest depths of my workshop.
         </p>
       </div>
@@ -108,7 +108,7 @@ const Projects = () => {
             >
               <div className="relative h-48 md:h-56 overflow-hidden">
                 <img
-                  src={project.image?.startsWith('http') ? project.image : `http://localhost:5000${project.image}`}
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   style={{ imageRendering: 'auto' }}
@@ -132,7 +132,7 @@ const Projects = () => {
                   ))}
                 </div>
                 <div className="mt-6">
-                  <motion.button 
+                  <motion.button
                     className="mc-btn !text-[8px] !py-2 w-full !bg-[#555] hover:!bg-[#7B68EE]"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
