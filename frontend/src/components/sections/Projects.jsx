@@ -86,9 +86,9 @@ const Projects = () => {
           <div className="w-10 h-10 bg-[var(--mc-lava)] mc-block flex items-center justify-center">
             <span className="text-white text-2xl">⚒</span>
           </div>
-          <h2 className="font-pixel text-3xl md:text-4xl text-[var(--mc-lava)]">Crafted Works</h2>
+          <h2 className="font-pixel text-xl sm:text-3xl md:text-4xl text-[var(--mc-redstone)]">Crafted Works</h2>
         </div>
-        <p className="text-2xl text-white/60 mt-2" style={{ textShadow: '1px 1px 0px rgba(0,0,0,0.3)' }}>
+        <p className="text-sm md:text-xl lg:text-2xl text-white/60 mt-2" style={{ textShadow: '1px 1px 0px rgba(0,0,0,0.3)' }}>
           Forged in the deepest depths of my workshop.
         </p>
       </div>

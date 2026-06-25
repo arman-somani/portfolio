@@ -103,9 +103,9 @@ const Skills = () => {
           <div className="w-10 h-10 bg-[var(--mc-diamond)] mc-block flex items-center justify-center">
             <span className="text-black text-2xl">⚒</span>
           </div>
-          <h2 className="font-pixel text-3xl md:text-4xl text-[var(--mc-diamond)]">Inventory</h2>
+          <h2 className="font-pixel text-xl sm:text-3xl md:text-4xl text-[var(--mc-diamond)]">Inventory</h2>
         </div>
-        <p className="text-2xl text-white/60 mt-2" style={{ textShadow: '1px 1px 0px rgba(0,0,0,0.3)' }}>
+        <p className="text-sm md:text-xl lg:text-2xl text-white/60 mt-2 md:mt-4" style={{ textShadow: '1px 1px 0px rgba(0,0,0,0.3)' }}>
           Click items to equip them. Hover to inspect.
         </p>
       </div>
