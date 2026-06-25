@@ -118,7 +118,7 @@ const Skills = () => {
               <span className="font-pixel text-[10px] text-white/40">{category.skills.length} ITEMS</span>
             </div>
             
-            <div className="grid grid-cols-3 md:grid-cols-5 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
               {category.skills.map((skill, i) => {
                 const isSelected = selectedSkill?.name === skill.name;
                 return (
@@ -166,7 +166,7 @@ const Skills = () => {
                   </span>
 
                   {/* Tooltip */}
-                  <div className={`absolute -top-28 left-1/2 -translate-x-1/2 bg-[#1B0A2E] border-2 rounded px-5 py-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-30 ${
+                  <div className={`absolute -top-28 left-1/2 -translate-x-1/2 bg-[#1B0A2E] border-2 rounded px-5 py-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-30 hidden md:block ${
                     skill.rarity === 'LEGENDARY' ? 'border-[#FFAA00]' : skill.rarity === 'EPIC' ? 'border-[#AA00AA]' : 'border-[#5555FF]'
                   }`}>
                     <p className="font-pixel text-xs mb-1" style={{ color: skill.color }}>{skill.name}</p>
@@ -202,13 +202,15 @@ const Skills = () => {
         {/* Hotbar */}
         <div className="mt-10 flex justify-center sticky bottom-10 z-50">
           <div className="bg-[#555]/80 mc-block p-4 shadow-[0_10px_50px_rgba(0,0,0,0.5)]">
-            <div className="flex items-center gap-5">
+            <div className="flex flex-col md:flex-row items-center gap-3 md:gap-5 text-center md:text-left">
               <span className="font-pixel text-[10px] text-white/50">EQUIPPED:</span>
               {selectedSkill ? (
-                <div className="flex items-center gap-3">
-                  <span className="text-4xl">{selectedSkill.icon}</span>
-                  <span className="font-pixel text-[10px]" style={{ color: selectedSkill.color }}>{selectedSkill.name}</span>
-                  <span className="text-base text-[var(--mc-emerald)] hidden sm:block">{selectedSkill.desc}</span>
+                <div className="flex flex-col md:flex-row items-center gap-2 md:gap-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-3xl md:text-4xl">{selectedSkill.icon}</span>
+                    <span className="font-pixel text-[10px] md:text-[10px]" style={{ color: selectedSkill.color }}>{selectedSkill.name}</span>
+                  </div>
+                  <span className="text-sm md:text-base text-[var(--mc-emerald)]">{selectedSkill.desc}</span>
                 </div>
               ) : (
                 <span className="font-pixel text-[10px] text-white/30">Click an item to equip</span>
