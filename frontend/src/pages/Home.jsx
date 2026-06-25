@@ -21,6 +21,13 @@ const Home = () => {
     <div className={`min-h-screen relative pb-[24px] transition-colors duration-1000 ${
       isDark ? 'bg-[#0a0a1a]' : 'bg-[var(--mc-obsidian)]'
     }`}>
+      {/* Global atmospheric night overlay */}
+      <div 
+        className={`fixed inset-0 z-[40] pointer-events-none transition-opacity duration-1000 bg-[#0A0A2A] mix-blend-multiply ${
+          isDark ? 'opacity-70' : 'opacity-0'
+        }`}
+      ></div>
+
       {/* Global interactive layers */}
       <BlockBreakParticles />
       <AchievementToast />
