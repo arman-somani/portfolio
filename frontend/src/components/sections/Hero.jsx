@@ -152,7 +152,7 @@ const Hero = ({ isDark }) => {
         >
           <div className="inline-block bg-[#2C2C2C]/90 mc-block px-6 py-3">
             <p className="font-pixel text-[10px] md:text-xs text-[var(--mc-diamond)] tracking-wider">
-              FULL STACK DEVELOPER
+              • Full Stack Developer • AI Enthusiast • Building scalable web experiences
             </p>
           </div>
         </motion.div>
