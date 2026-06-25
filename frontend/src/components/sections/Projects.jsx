@@ -5,7 +5,7 @@ import api from '../../services/api';
 const Projects = () => {
   const projects = [
     { _id: '1', title: 'Media Toolkit', description: 'A comprehensive web application for processing and manipulating media files effortlessly.', image: '/mediatoolkit.png', technologies: ['React', 'Next.js', 'Tailwind', 'Docker', 'Vercel', 'MongoDB', 'Render', 'GitHub', 'Anime.js'], url: 'https://mediatoolkit.vercel.app' },
-    { _id: '2', title: 'CareSignal AI', description: 'A comprehensive AI-powered health and wellness platform for patient monitoring.', image: '/caresignal_custom.png', technologies: ['React', 'Next.js', 'Tailwind', 'Node.js', 'MongoDB', 'Vercel', 'OpenAI', 'Framer Motion'], url: 'https://mycaresignal.vercel.app' },
+    { _id: '2', title: 'CareSignal AI (UNDER-DEVELOPMENT)', description: 'A comprehensive AI-powered health and wellness platform for patient monitoring.', image: '/caresignal_custom.png', technologies: ['React', 'Next.js', 'Tailwind', 'Node.js', 'MongoDB', 'Vercel', 'OpenAI', 'Framer Motion'] },
   ];
   const loading = false;
 
