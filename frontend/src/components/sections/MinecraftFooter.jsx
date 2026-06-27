@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import api from '../../services/api';
+import Creeper from '../ui/Creeper';
 
 const MinecraftFooter = () => {
   const [time, setTime] = useState('');
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [showCreeper, setShowCreeper] = useState(false);
+  const [isBlownUp, setIsBlownUp] = useState(false);
+  const [explosionFlash, setExplosionFlash] = useState(false);
 
   useEffect(() => {
     const updateTime = () => {
@@ -18,19 +22,35 @@ const MinecraftFooter = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setStatus('loading');
+    setShowCreeper(true);
+    setIsBlownUp(false);
+  };
+
+  const handleCreeperBlast = async () => {
+    setShowCreeper(false);
+    setExplosionFlash(true);
+    setIsBlownUp(true);
+    
+    // Hide flash after a bit
+    setTimeout(() => setExplosionFlash(false), 800);
+
     try {
       await api.post('/contact', formData);
       setStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setStatus('idle'), 5000);
+      setTimeout(() => {
+        setStatus('idle');
+        setIsBlownUp(false);
+      }, 5000);
     } catch (error) {
       console.error(error);
       const msg = error.response?.data?.message || error.message || 'UNKNOWN ERROR';
       setErrorMessage(msg.toUpperCase());
       setStatus('error');
+      setIsBlownUp(false);
       setTimeout(() => setStatus('idle'), 8000);
     }
   };
@@ -66,6 +86,19 @@ const MinecraftFooter = () => {
         />
       </div>
 
+      {/* Explosion Flash Overlay */}
+      <AnimatePresence>
+        {explosionFlash && (
+          <motion.div
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="fixed inset-0 bg-white z-[999] pointer-events-none"
+          />
+        )}
+      </AnimatePresence>
+
       {/* Main footer content — BEDROCK */}
       <div className="py-16 px-6 relative mc-tex-bedrock">
         {/* Depth indicator */}
@@ -76,61 +109,78 @@ const MinecraftFooter = () => {
         <div className="max-w-5xl mx-auto relative z-10">
 
           {/* Contact CTA */}
-          <div className="text-center mb-16">
-            <div className="inline-block bg-[#9C6B30] mc-block p-6 md:p-10 w-full max-w-lg">
-              <h2 className="font-pixel text-sm md:text-xl text-[var(--mc-gold)] mb-6">
-                LET'S BUILD<br />TOGETHER
-              </h2>
-              <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left">
-                <input
-                  type="text"
-                  placeholder="NAME"
-                  required
-                  value={formData.name}
-                  onChange={e => setFormData({ ...formData, name: e.target.value })}
-                  className="bg-[#222] border-2 border-[#111] border-b-[#444] border-r-[#444] text-white p-3 font-pixel text-[10px] md:text-xs outline-none focus:border-[var(--mc-diamond)] w-full"
-                />
-                <input
-                  type="email"
-                  placeholder="EMAIL"
-                  required
-                  value={formData.email}
-                  onChange={e => setFormData({ ...formData, email: e.target.value })}
-                  className="bg-[#222] border-2 border-[#111] border-b-[#444] border-r-[#444] text-white p-3 font-pixel text-[10px] md:text-xs outline-none focus:border-[var(--mc-diamond)] w-full"
-                />
-                <input
-                  type="text"
-                  placeholder="SUBJECT"
-                  required
-                  value={formData.subject}
-                  onChange={e => setFormData({ ...formData, subject: e.target.value })}
-                  className="bg-[#222] border-2 border-[#111] border-b-[#444] border-r-[#444] text-white p-3 font-pixel text-[10px] md:text-xs outline-none focus:border-[var(--mc-diamond)] w-full"
-                />
-                <textarea
-                  placeholder="MESSAGE"
-                  required
-                  rows="4"
-                  value={formData.message}
-                  onChange={e => setFormData({ ...formData, message: e.target.value })}
-                  className="bg-[#222] border-2 border-[#111] border-b-[#444] border-r-[#444] text-white p-3 font-pixel text-[10px] md:text-xs outline-none focus:border-[var(--mc-diamond)] w-full resize-none"
-                />
+          <div className="text-center mb-16 relative">
+            {!isBlownUp ? (
+              <motion.div 
+                className="inline-block bg-[#9C6B30] mc-block p-6 md:p-10 w-full max-w-lg"
+                animate={showCreeper ? { x: [-8, 8, -8, 8, 0], transition: { repeat: Infinity, duration: 0.1 } } : {}}
+              >
+                <h2 className="font-pixel text-sm md:text-xl text-[var(--mc-gold)] mb-6">
+                  LET'S BUILD<br />TOGETHER
+                </h2>
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left">
+                  <input
+                    type="text"
+                    placeholder="NAME"
+                    required
+                    value={formData.name}
+                    onChange={e => setFormData({ ...formData, name: e.target.value })}
+                    className="bg-[#222] border-2 border-[#111] border-b-[#444] border-r-[#444] text-white p-3 font-pixel text-[10px] md:text-xs outline-none focus:border-[var(--mc-diamond)] w-full"
+                  />
+                  <input
+                    type="email"
+                    placeholder="EMAIL"
+                    required
+                    value={formData.email}
+                    onChange={e => setFormData({ ...formData, email: e.target.value })}
+                    className="bg-[#222] border-2 border-[#111] border-b-[#444] border-r-[#444] text-white p-3 font-pixel text-[10px] md:text-xs outline-none focus:border-[var(--mc-diamond)] w-full"
+                  />
+                  <input
+                    type="text"
+                    placeholder="SUBJECT"
+                    required
+                    value={formData.subject}
+                    onChange={e => setFormData({ ...formData, subject: e.target.value })}
+                    className="bg-[#222] border-2 border-[#111] border-b-[#444] border-r-[#444] text-white p-3 font-pixel text-[10px] md:text-xs outline-none focus:border-[var(--mc-diamond)] w-full"
+                  />
+                  <textarea
+                    placeholder="MESSAGE"
+                    required
+                    rows="4"
+                    value={formData.message}
+                    onChange={e => setFormData({ ...formData, message: e.target.value })}
+                    className="bg-[#222] border-2 border-[#111] border-b-[#444] border-r-[#444] text-white p-3 font-pixel text-[10px] md:text-xs outline-none focus:border-[var(--mc-diamond)] w-full resize-none"
+                  />
 
-                {status === 'success' && <div className="text-[var(--mc-emerald)] font-pixel text-[10px] text-center">MESSAGE SENT SUCCESSFULLY!</div>}
-                {status === 'error' && <div className="text-[var(--mc-redstone)] font-pixel text-[10px] text-center">ERROR: {errorMessage}</div>}
+                  {status === 'error' && <div className="text-[var(--mc-redstone)] font-pixel text-[10px] text-center mt-2">ERROR: {errorMessage}</div>}
 
-                <motion.button
-                  type="submit"
-                  disabled={status === 'loading'}
-                  className={`mc-btn !text-[10px] !bg-[var(--mc-emerald)] block w-full mt-2 ${status === 'loading' ? 'opacity-50 cursor-not-allowed' : ''}`}
-                  style={{ color: '#000', textShadow: 'none' }}
-                  whileHover={status !== 'loading' ? { scale: 1.02 } : {}}
-                  whileTap={status !== 'loading' ? { scale: 0.98 } : {}}
-                >
-                  {status === 'loading' ? 'SENDING...' : '✉ SEND MESSAGE'}
-                </motion.button>
-              </form>
-            </div>
-            <div className="mx-auto w-6 h-12 bg-[#6B4226] mc-block"></div>
+                  <motion.button
+                    type="submit"
+                    disabled={status === 'loading'}
+                    className={`mc-btn !text-[10px] !bg-[var(--mc-emerald)] block w-full mt-4 ${status === 'loading' ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    style={{ color: '#000', textShadow: 'none' }}
+                    whileHover={status !== 'loading' ? { scale: 1.02 } : {}}
+                    whileTap={status !== 'loading' ? { scale: 0.98 } : {}}
+                  >
+                    {status === 'loading' ? 'SENDING...' : '✉ SEND MESSAGE'}
+                  </motion.button>
+                </form>
+              </motion.div>
+            ) : (
+              <div className="inline-flex flex-col items-center justify-center bg-[#111]/80 border-4 border-dashed border-[#333] p-6 md:p-10 w-full max-w-lg min-h-[400px]">
+                {status === 'loading' && <div className="font-pixel text-[12px] text-white/50 animate-pulse text-center">SENDING THROUGH THE NETHER...</div>}
+                {status === 'success' && (
+                  <motion.div 
+                    initial={{ scale: 0.5, opacity: 0 }} 
+                    animate={{ scale: 1, opacity: 1 }} 
+                    className="text-[var(--mc-emerald)] font-pixel text-sm md:text-lg text-center leading-loose"
+                  >
+                    MESSAGE<br />SENT<br />SUCCESSFULLY!
+                  </motion.div>
+                )}
+              </div>
+            )}
+            {!isBlownUp && <div className="mx-auto w-6 h-12 bg-[#6B4226] mc-block"></div>}
           </div>
 
           {/* Links */}
@@ -182,6 +232,8 @@ const MinecraftFooter = () => {
           <span className="font-pixel text-[5px] text-white/10 tracking-widest">YOU HAVE REACHED THE BOTTOM OF THE WORLD</span>
         </div>
       </div>
+
+      {showCreeper && <Creeper delay={0} onBlast={handleCreeperBlast} />}
     </footer>
   );
 };

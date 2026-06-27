@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const Creeper = ({ onBlast }) => {
+const Creeper = ({ onBlast, delay = 30000 }) => {
   const [visible, setVisible] = useState(false);
   const [ignited, setIgnited] = useState(false);
   const [side, setSide] = useState('left');
 
   useEffect(() => {
-    // Appear after 30 seconds
+    // Appear after delay
     const appearTimer = setTimeout(() => {
       setSide(Math.random() > 0.5 ? 'left' : 'right');
       setVisible(true);
@@ -24,10 +24,10 @@ const Creeper = ({ onBlast }) => {
         }, 1500);
         
       }, 2000);
-    }, 30000);
+    }, delay);
 
     return () => clearTimeout(appearTimer);
-  }, [onBlast]);
+  }, [onBlast, delay]);
 
   return (
     <AnimatePresence>
