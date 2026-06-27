@@ -29,6 +29,10 @@
     --mc-text-shadow: #3F3F3F;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   * {
     image-rendering: pixelated;
   }
