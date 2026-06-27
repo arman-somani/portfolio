@@ -159,27 +159,16 @@ const MinecraftFooter = () => {
 
                   {status === 'error' && <div className="text-[var(--mc-redstone)] font-pixel text-[10px] text-center mt-2">ERROR: {errorMessage}</div>}
 
-                  <div className="relative w-full">
-                    <motion.button
-                      type="submit"
-                      disabled={status === 'loading'}
-                      className={`mc-btn !text-[10px] !bg-[var(--mc-emerald)] block w-full mt-4 ${status === 'loading' ? 'opacity-50 cursor-not-allowed' : ''}`}
-                      style={{ color: '#000', textShadow: 'none' }}
-                      whileHover={status !== 'loading' ? { scale: 1.02 } : {}}
-                      whileTap={status !== 'loading' ? { scale: 0.98 } : {}}
-                    >
-                      {status === 'loading' ? 'SENDING...' : '✉ SEND MESSAGE'}
-                    </motion.button>
-                    {showCreeper && (
-                      <Creeper 
-                        delay={0} 
-                        onBlast={handleCreeperBlast} 
-                        className="absolute bottom-0 z-[150] pointer-events-none" 
-                        initialX={300} 
-                        targetX={20} 
-                      />
-                    )}
-                  </div>
+                  <motion.button
+                    type="submit"
+                    disabled={status === 'loading'}
+                    className={`mc-btn !text-[10px] !bg-[var(--mc-emerald)] block w-full mt-4 ${status === 'loading' ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    style={{ color: '#000', textShadow: 'none' }}
+                    whileHover={status !== 'loading' ? { scale: 1.02 } : {}}
+                    whileTap={status !== 'loading' ? { scale: 0.98 } : {}}
+                  >
+                    {status === 'loading' ? 'SENDING...' : '✉ SEND MESSAGE'}
+                  </motion.button>
                 </form>
               </motion.div>
             ) : (
@@ -248,6 +237,8 @@ const MinecraftFooter = () => {
           <span className="font-pixel text-[5px] text-white/10 tracking-widest">YOU HAVE REACHED THE BOTTOM OF THE WORLD</span>
         </div>
       </div>
+
+      {showCreeper && <Creeper delay={0} onBlast={handleCreeperBlast} />}
     </footer>
   );
 };
