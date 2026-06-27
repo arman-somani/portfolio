@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const Creeper = ({ onBlast, delay = 30000 }) => {
+const Creeper = ({ onBlast, delay = 30000, className = "fixed bottom-32 z-[150]", initialX = 200, targetX = 40 }) => {
   const [visible, setVisible] = useState(false);
   const [ignited, setIgnited] = useState(false);
   const [side, setSide] = useState('left');
@@ -33,11 +33,11 @@ const Creeper = ({ onBlast, delay = 30000 }) => {
     <AnimatePresence>
       {visible && (
         <motion.div
-          initial={{ x: side === 'left' ? -200 : 200 }}
-          animate={{ x: side === 'left' ? 40 : -40 }}
+          initial={{ x: side === 'left' ? -initialX : initialX }}
+          animate={{ x: side === 'left' ? targetX : -targetX }}
           exit={{ scale: 2, opacity: 0 }}
           transition={{ type: 'tween', duration: 2, ease: 'linear' }}
-          className={`fixed bottom-32 z-[150] ${side === 'left' ? 'left-0' : 'right-0'}`}
+          className={`${className} ${side === 'left' ? 'left-0' : 'right-0'}`}
         >
           {/* Creeper Container */}
           <motion.div 
