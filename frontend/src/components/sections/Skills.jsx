@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 
 const skillCategories = [
   {
@@ -65,17 +64,7 @@ const rarityColors = {
   LEGENDARY: '#FFAA00',
 };
 
-const continuousAnimations = [
-  { animate: { y: [0, -6, 0] }, transition: { duration: 2.5, ease: 'easeInOut' } },
-  { animate: { rotate: [0, 8, -8, 0] }, transition: { duration: 3, ease: 'linear' } },
-  { animate: { scale: [1, 1.1, 1] }, transition: { duration: 2, ease: 'easeInOut' } },
-  { animate: { x: [0, 4, -4, 0] }, transition: { duration: 3.5, ease: 'easeInOut' } },
-  { animate: { y: [0, -4, 0], rotate: [0, 5, -5, 0] }, transition: { duration: 3, ease: 'easeInOut' } },
-  { animate: { scale: [1, 0.9, 1], rotate: [0, 4, 0] }, transition: { duration: 2.5, ease: 'easeInOut' } },
-];
-
 const Skills = () => {
-  const [hoveredSkill, setHoveredSkill] = useState(null);
   const [selectedSkill, setSelectedSkill] = useState(null);
 
   return (
@@ -122,39 +111,18 @@ const Skills = () => {
               {category.skills.map((skill, i) => {
                 const isSelected = selectedSkill?.name === skill.name;
                 return (
-                  <motion.div
+                  <div
                     key={i}
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 20, delay: i * 0.03 }}
-                    whileHover={{ scale: 1.1, y: -8 }}
-                    whileTap={{ scale: 0.9 }}
                     onClick={() => setSelectedSkill(isSelected ? null : skill)}
-                    onHoverStart={() => setHoveredSkill(skill.name)}
-                    onHoverEnd={() => setHoveredSkill(null)}
-                    className={`mc-slot p-2 md:p-3 flex flex-col items-center justify-center gap-2 cursor-pointer group relative transition-all duration-200 aspect-square ${isSelected ? 'ring-2 ring-white/80 bg-[#777]' : ''
+                    className={`mc-slot p-2 md:p-3 flex flex-col items-center justify-center gap-2 cursor-pointer group relative aspect-square ${isSelected ? 'ring-2 ring-white/80 bg-[#777]' : ''
                       }`}
                     style={skill.enchanted ? {
                       boxShadow: `0 0 15px ${skill.color}40`,
-                      animation: 'pulse 3s infinite',
                     } : {}}
                   >
-                    <motion.span
-                      className="text-5xl md:text-6xl transition-transform"
-                      animate={
-                        hoveredSkill === skill.name
-                          ? { rotate: [0, -15, 15, -15, 0], scale: 1.2 }
-                          : continuousAnimations[i % continuousAnimations.length].animate
-                      }
-                      transition={
-                        hoveredSkill === skill.name
-                          ? { duration: 0.5 }
-                          : { ...continuousAnimations[i % continuousAnimations.length].transition, repeat: Infinity, delay: i * 0.1 }
-                      }
-                    >
+                    <span className="text-5xl md:text-6xl">
                       {skill.icon}
-                    </motion.span>
+                    </span>
 
                     <span className="font-pixel text-[10px] md:text-xs text-center leading-tight text-white/80 group-hover:text-white mt-1">
                       {skill.name}
@@ -165,7 +133,7 @@ const Skills = () => {
                     </span>
 
                     {/* Tooltip */}
-                    <div className={`absolute -top-28 left-1/2 -translate-x-1/2 bg-[#1B0A2E] border-2 rounded px-5 py-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-30 hidden md:block ${skill.rarity === 'LEGENDARY' ? 'border-[#FFAA00]' : skill.rarity === 'EPIC' ? 'border-[#AA00AA]' : 'border-[#5555FF]'
+                    <div className={`absolute -top-28 left-1/2 -translate-x-1/2 bg-[#1B0A2E] border-2 rounded px-5 py-4 opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-30 hidden md:block ${skill.rarity === 'LEGENDARY' ? 'border-[#FFAA00]' : skill.rarity === 'EPIC' ? 'border-[#AA00AA]' : 'border-[#5555FF]'
                       }`}>
                       <p className="font-pixel text-xs mb-1" style={{ color: skill.color }}>{skill.name}</p>
                       <p className="font-pixel text-[8px]" style={{ color: rarityColors[skill.rarity] }}>{skill.rarity}</p>
@@ -175,15 +143,11 @@ const Skills = () => {
                     </div>
 
                     {isSelected && (
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        className="absolute -top-2 -right-2 w-5 h-5 bg-[var(--mc-emerald)] mc-block flex items-center justify-center"
-                      >
+                      <div className="absolute -top-2 -right-2 w-5 h-5 bg-[var(--mc-emerald)] mc-block flex items-center justify-center">
                         <span className="text-[8px] text-black">✓</span>
-                      </motion.div>
+                      </div>
                     )}
-                  </motion.div>
+                  </div>
                 )
               })}
 
