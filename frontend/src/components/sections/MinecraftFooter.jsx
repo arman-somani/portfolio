@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import api from '../../services/api';
 import Creeper from '../ui/Creeper';
+import NetherPortalBackground from '../ui/NetherPortalBackground';
 
 const MinecraftFooter = () => {
   const [time, setTime] = useState('');
@@ -172,25 +173,8 @@ const MinecraftFooter = () => {
                 </form>
               </motion.div>
             ) : (
-              <div className={`inline-flex flex-col items-center justify-center p-6 md:p-10 w-full max-w-lg min-h-[400px] relative overflow-hidden border-4 ${status === 'loading' ? 'border-[#311B92]' : 'border-dashed border-[#333] bg-[#111]/80'}`}>
-                {status === 'loading' && (
-                  <motion.div 
-                    className="absolute inset-0 z-0"
-                    style={{
-                      background: 'repeating-linear-gradient(-45deg, #4A148C 0px, #4A148C 16px, #6A1B9A 16px, #6A1B9A 32px, #311B92 32px, #311B92 48px)',
-                      backgroundSize: '68px 68px' // ~ 48 * 1.414
-                    }}
-                    animate={{ backgroundPosition: ['0px 0px', '68px 68px'] }}
-                    transition={{ duration: 1.5, ease: "linear", repeat: Infinity }}
-                  >
-                    <motion.div 
-                      className="absolute inset-0 mix-blend-multiply"
-                      style={{ background: 'radial-gradient(circle, transparent 10%, #110022 100%)' }}
-                      animate={{ opacity: [0.6, 0.9, 0.6] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    />
-                  </motion.div>
-                )}
+              <div className={`inline-flex flex-col items-center justify-center p-6 md:p-10 w-full max-w-lg min-h-[400px] relative overflow-hidden border-4 ${status === 'loading' ? 'border-[#311B92] bg-[#220033]' : 'border-dashed border-[#333] bg-[#111]/80'}`}>
+                {status === 'loading' && <NetherPortalBackground />}
 
                 {status === 'loading' && (
                   <div className="font-pixel text-[14px] text-[#E1BEE7] animate-pulse text-center relative z-10" style={{ textShadow: '3px 3px 0 #000' }}>
